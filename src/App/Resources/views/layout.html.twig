@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% stylesheets
+        '@App/Resources/less/main.less'
+        filter="less,?uglifycss"
+        output="css/main.css"
+    %}
+        <link href="{{ asset_url }}" rel="stylesheet" />
+    {% endstylesheets %}
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        {% block body %}{% endblock %}
+    </div>
+</div>
+{% javascripts
+'../app/Resources/assets/jquery/jquery.min.js'
+'../app/Resources/assets/bootstrap/dist/bootstrap.min.js'
+filter="?uglifyjs2"
+output='js/main.js'
+%}
+    <script src="{{ asset_url }}" type="text/javascript"></script>
+{% endjavascripts %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>

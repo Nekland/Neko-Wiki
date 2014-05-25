@@ -1,0 +1,27 @@
+language: php
+
+php:
+  - 5.4
+  - 5.5
+
+before_script:
+    - composer install -n
+    - php app/console do:da:cr -e=test
+    - php app/console do:sc:cr -e=test
+    - php app/console do:fi:lo -n -e=test
+
+    # This part is for making selenium work
+    # Notice that you can also use PhantomJS
+    - export DISPLAY=:99
+    - wget http://selenium.googlecode.com/files/selenium-server-standalone-2.28.0.jar
+    - java -jar selenium-server-standalone-2.28.0.jar > /dev/null &
+    - sh -e /etc/init.d/xvfb start
+    - sleep 5
+
+notifications:
+    # email:
+    #     - developer@example.com
+
+script:
+    - phpunit -c app
+    - bin/behat --no-snippets --verbose

@@ -1,0 +1,11 @@
+{
+    "name":    "nekland-standard-edition",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "less":           "*",
+        "bower":          "*",
+        "uglify-js":      "*",
+        "uglifycss":      "*"
+    }
+}
