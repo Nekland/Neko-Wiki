@@ -18,7 +18,7 @@ class LoadPageData extends AbstractFixture
         $page = new Page();
         $page
             ->setTitle('Home')
-            ->setContent('Hello i am the homepage')
+            ->setContent('Hello i am the homepage. Change me by connect yourself.')
         ;
 
         $manager->persist($page);

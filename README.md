@@ -1,4 +1,4 @@
-Symfony Wiki
+Neko Wiki
 ============
 
 For now, nothing serious.
