@@ -28,7 +28,7 @@ class Page implements Translatable
      * @var string
      *
      * @Gedmo\Translatable
-     * @ORM\Column(name="tilte", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
 
@@ -120,7 +120,7 @@ class Page implements Translatable
     /**
      * Set content
      *
-     * @param string $content
+     * @param  string $content
      * @return Page
      */
     public function setContent($content)

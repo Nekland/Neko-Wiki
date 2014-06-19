@@ -7,7 +7,7 @@
         "psr-0": { "": "src/" }
     },
     "require": {
-        "php":                                  ">=5.3.3",
+        "php":                                  ">=5.4.0",
         "symfony/symfony":                      "2.4",
         "doctrine/orm":                         "2.4.*,>=2.2.3",
         "doctrine/doctrine-bundle":             "1.2.*",
@@ -19,7 +19,7 @@
         "sensio/framework-extra-bundle":        "2.3.*",
         "sensio/generator-bundle":              "2.3.*",
         "incenteev/composer-parameter-handler": "2.1.*",
-        "yohang/dependency-tools":              "dev-master",
+        "nekland/dependency-tools":             "~1.1.1",
         "doctrine/doctrine-fixtures-bundle":    "2.2.*",
         "stof/doctrine-extensions-bundle":      "~1.1@dev"
     },
@@ -52,12 +52,6 @@
     "config": {
         "bin-dir": "bin"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/Nek-/dependency-tools"
-        }
-    ],
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
