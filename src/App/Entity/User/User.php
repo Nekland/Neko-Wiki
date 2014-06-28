@@ -40,12 +40,21 @@ class User implements UserInterface
     /**
      * @var string
      *
+     * @ORM\Column(name="email", type="string")
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="salt", type="string")
      */
     private $salt;
 
     /**
      * @var string[]
+     *
+     * @ORM\ManyToMany(targetEntity="Role")
      */
     private $roles;
 
@@ -161,6 +170,24 @@ class User implements UserInterface
     public function getUsername()
     {
         return $this->username;
+    }
+
+    /**
+     * @param  string $email
+     * @return self
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 
     /**

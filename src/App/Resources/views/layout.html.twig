@@ -16,6 +16,13 @@
 <body>
 <div class="container">
     <div class="row">
+        <div class="col-md-12">
+            <ul>
+                <li><a href="{{ path('registration') }}">{% trans %}app.user.registration.register{% endtrans %}</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
         {% block body %}{% endblock %}
     </div>
 </div>

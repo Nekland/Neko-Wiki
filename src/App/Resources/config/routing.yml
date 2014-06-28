@@ -2,3 +2,9 @@ homepage:
     path: /
     defaults:
         _controller: 'App:Home:home'
+
+
+registration:
+    path: /registration
+    defaults:
+        _controller: 'App:User/Registration:register'

@@ -1,0 +1,7 @@
+app.user.registration:
+    register: Register
+    form:
+        username: Username :
+        password: Password :
+        email:    Email :
+        submit:   Join us !

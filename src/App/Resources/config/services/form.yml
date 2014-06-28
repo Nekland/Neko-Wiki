@@ -1,0 +1,5 @@
+services:
+    neko_wiki.form.registration:
+        class: App\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: registration }

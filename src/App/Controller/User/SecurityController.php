@@ -37,12 +37,4 @@ class SecurityController extends Controller
         return $this->render('App:User:login.html.twig', ['error' => $error, 'last_username' => $lastUsername]);
     }
 
-    public function registerAction()
-    {
-        $handler = $this->get('neko_wiki.form.handler.registration');
-
-        $form = $handler->getForm();
-
-        return $this->render('App:User:register.html.twig', ['form' => $form->createView()]);
-    }
 }
