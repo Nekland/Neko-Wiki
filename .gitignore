@@ -15,3 +15,5 @@
 /behat.yml
 /bin
 /npm-debug.log
+/web/css
+/web/js
