@@ -4,7 +4,18 @@ homepage:
         _controller: 'App:Home:home'
 
 
+#
+# User
+
 registration:
     path: /registration
     defaults:
         _controller: 'App:User/Registration:register'
+
+login:
+    path: /login
+    defaults:
+        _controller: 'App:User/Security:login'
+
+login_check:
+    path: /login_check

@@ -1,5 +1,6 @@
 app.user.registration:
     register: Register
+    login: Login
     form:
         username: Username :
         password: Password :

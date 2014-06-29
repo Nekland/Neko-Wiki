@@ -19,6 +19,7 @@
         <div class="col-md-12">
             <ul>
                 <li><a href="{{ path('registration') }}">{% trans %}app.user.registration.register{% endtrans %}</a></li>
+                <li><a href="{{ path('login') }}">{% trans %}app.user.registration.login{% endtrans %}</a></li>
             </ul>
         </div>
     </div>
@@ -27,7 +28,7 @@
     </div>
 </div>
 {% javascripts
-'../app/Resources/assets/jquery/jquery.min.js'
+'../app/Resources/assets/jquery/dist/jquery.min.js'
 '../app/Resources/assets/bootstrap/dist/bootstrap.min.js'
 filter="?uglifyjs2"
 output='js/main.js'

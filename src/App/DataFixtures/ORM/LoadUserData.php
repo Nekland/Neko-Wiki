@@ -36,7 +36,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $user = new User();
         $user->setUsername('admin');
         $user->setSalt(md5(uniqid()));
-        $user->setPassword($this->getEncoder('admin'));
+        $user->setPassword($this->getEncodedPassword($user, 'admin'));
         $user->setEmail('admin@admin.com');
 
         $manager->persist($user);
@@ -52,14 +52,16 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
     }
 
     /**
-     * @param \Symfony\Component\Security\Core\User\UserInterface $user
-     * @return \Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface
+     * @param  \Symfony\Component\Security\Core\User\UserInterface $user
+     * @param  string $password
+     * @return string
      */
-    private function getEncoder($user)
+    private function getEncodedPassword($user, $password)
     {
         return $this->container
             ->get('security.encoder_factory')
             ->getEncoder($user)
+            ->encodePassword($password, $user->getSalt())
         ;
     }
 }
