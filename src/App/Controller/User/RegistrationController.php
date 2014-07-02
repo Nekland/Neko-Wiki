@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller\User;
+use App\Entity\User\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
@@ -19,5 +20,17 @@ class RegistrationController extends Controller
         $form = $this->createForm('registration');
 
         return $this->render('App:User:register.html.twig', ['form' => $form->createView()]);
+    }
+
+    public function doRegistrationAction()
+    {
+        $user = new User();
+        $form = $this->createForm('registration', $user);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+        }
     }
 }
