@@ -2,6 +2,7 @@
 
 namespace App\Entity\User;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\Role\RoleHierarchyInterface;
 use Symfony\Component\Security\Core\Role\RoleInterface;
@@ -9,7 +10,7 @@ use Symfony\Component\Security\Core\Role\RoleInterface;
 /**
  * Class Role
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="App\Entity\User\RoleRepository")
  * @ORM\Table(name="role")
  */
 class Role implements RoleHierarchyInterface, RoleInterface
@@ -31,14 +32,14 @@ class Role implements RoleHierarchyInterface, RoleInterface
     private $name;
 
     /**
-     * @var Role[]
+     * @var Role
      *
      * @ORM\ManyToOne(targetEntity="Role", inversedBy="children")
      */
     private $parent;
 
     /**
-     * @var Role[]
+     * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Role", mappedBy="parent")
      */
@@ -50,6 +51,12 @@ class Role implements RoleHierarchyInterface, RoleInterface
      * @ORM\ManyToMany(targetEntity="User")
      */
     private $user;
+
+    public function __construct($name = '')
+    {
+        $this->name     = $name;
+        $this->children = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -66,6 +73,12 @@ class Role implements RoleHierarchyInterface, RoleInterface
     public function setChildren($children)
     {
         $this->children = $children;
+        return $this;
+    }
+
+    public function addChild(Role $child)
+    {
+        $this->children->add($child);
         return $this;
     }
 
@@ -102,6 +115,8 @@ class Role implements RoleHierarchyInterface, RoleInterface
     public function setParent($parent)
     {
         $this->parent = $parent;
+        $parent->addChild($this);
+
         return $this;
     }
 

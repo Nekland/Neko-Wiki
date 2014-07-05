@@ -6,9 +6,15 @@ homepage:
 
 #
 # User
+#
 
 registration:
     path: /registration
+    defaults:
+        _controller: 'App:User/Registration:registration'
+
+register:
+    path: /register
     defaults:
         _controller: 'App:User/Registration:register'
 
@@ -19,3 +25,8 @@ login:
 
 login_check:
     path: /login_check
+
+profile:
+    path: /dashboard/profile
+    defaults:
+        _controller: 'App:User/Profile:profile'

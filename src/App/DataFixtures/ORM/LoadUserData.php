@@ -13,21 +13,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Class LoadUserData
  * @package App\DataFixtures\ORM
  */
-class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
+class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 {
-    /**
-     * @var ContainerInterface
-     */
-    private $container;
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setContainer(ContainerInterface $container = null)
-    {
-        $this->container = $container;
-    }
-
     /**
      * {@inheritDoc}
      */
@@ -36,8 +23,9 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $user = new User();
         $user->setUsername('admin');
         $user->setSalt(md5(uniqid()));
-        $user->setPassword($this->getEncodedPassword($user, 'admin'));
+        $user->setPassword('admin');
         $user->setEmail('admin@admin.com');
+        $user->addRole($this->getReference('role-admin'));
 
         $manager->persist($user);
         $manager->flush();
@@ -49,19 +37,5 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
     public function getOrder()
     {
         return 2;
-    }
-
-    /**
-     * @param  \Symfony\Component\Security\Core\User\UserInterface $user
-     * @param  string $password
-     * @return string
-     */
-    private function getEncodedPassword($user, $password)
-    {
-        return $this->container
-            ->get('security.encoder_factory')
-            ->getEncoder($user)
-            ->encodePassword($password, $user->getSalt())
-        ;
     }
 }

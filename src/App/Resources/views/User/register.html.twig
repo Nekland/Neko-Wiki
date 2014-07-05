@@ -1,5 +1,5 @@
 {% extends 'App::layout.html.twig' %}
 
 {% block body %}
-{{ form(form) }}
+{{ form(form, {'action': path('register')}) }}
 {% endblock %}

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * Very simple registration form type
@@ -19,7 +20,8 @@ class RegistrationType extends AbstractType
             ->add('username', null, [
                 'label' => 'app.user.registration.form.username'
             ])
-            ->add('password', null, [
+            ->add('password', 'repeated', [
+                'type'  => 'password',
                 'label' => 'app.user.registration.form.password'
             ])
             ->add('email', null, [
@@ -32,9 +34,18 @@ class RegistrationType extends AbstractType
     }
 
     /**
-     * Returns the name of this type.
-     *
-     * @return string The name of this type
+     * {@inheritdoc}
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'App\Entity\User\User',
+            'intention'  => 'registration',
+        ));
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function getName()
     {

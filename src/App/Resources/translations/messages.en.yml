@@ -1,8 +1,14 @@
-app.user.registration:
-    register: Register
-    login: Login
-    form:
-        username: Username :
-        password: Password :
-        email:    Email :
-        submit:   Join us !
+app:
+    user:
+        registration:
+            success: Thank you for register :)
+            error: There's a problem with the data you sended to us :-(
+            register: Register
+            login: Login
+            form:
+                username: Username :
+                password: Password :
+                email:    Email :
+                submit:   Join us !
+        profile:
+            welcome: Your profile

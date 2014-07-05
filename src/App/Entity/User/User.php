@@ -2,14 +2,15 @@
 
 namespace App\Entity\User;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class User
  *
+ * @ORM\Entity()
  * @ORM\Table(name="user")
- * @ORM\Entity
  */
 class User implements UserInterface
 {
@@ -30,6 +31,7 @@ class User implements UserInterface
     private $username;
 
     /**
+     * It should be clean while the user is retrieved
      * @var string
      *
      * @ORM\Column(name="password", type="string")
@@ -51,9 +53,9 @@ class User implements UserInterface
     private $salt;
 
     /**
-     * @var string[]
+     * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Role")
+     * @ORM\ManyToMany(targetEntity="Role", cascade={"persist"})
      */
     private $roles;
 
@@ -65,6 +67,7 @@ class User implements UserInterface
         } else {
             $this->salt = $salt;
         }
+        $this->roles = new ArrayCollection();
     }
 
     /**
@@ -86,12 +89,32 @@ class User implements UserInterface
     }
 
     /**
-     * @param  string[] $roles
+     * @param  Role[] $roles
      * @return self
      */
-    public function setRoles($roles)
+    public function setRoles(array $roles)
     {
-        $this->roles = $roles;
+        $this->roles = new ArrayCollection($roles);
+        return $this;
+    }
+
+    /**
+     * @param Role[] $roles
+     * @return self
+     */
+    public function addRoles(array $roles)
+    {
+        $this->roles->add($roles);
+        return $this;
+    }
+
+    /**
+     * @param Role $role
+     * @return self
+     */
+    public function addRole(Role $role)
+    {
+        $this->roles->add($role);
         return $this;
     }
 
@@ -133,7 +156,7 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return $this->roles;
+        return $this->roles->toArray();
     }
 
     /**

@@ -10,33 +10,28 @@ security:
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
-        in_memory:
-            memory:
-                users:
-                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+        main:
+            entity:
+                class: App\Entity\User\User
+                property: username
 
     firewalls:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        login:
-            pattern:  ^/demo/secured/login$
-            security: false
-
         secured_area:
-            pattern:    ^/demo/secured/
+            pattern:    ^/dashboard
             form_login:
-                check_path: _security_check
-                login_path: _demo_login
+                check_path: login_check
+                login_path: login
             logout:
-                path:   _demo_logout
-                target: _demo
+                path:   logout
+                target: homepage
             #anonymous: ~
             #http_basic:
             #    realm: "Secured Demo Area"
 
     access_control:
-        - { path: ^/demo/secured/hello/admin/, roles: ROLE_ADMIN }
+        - { path: ^/dashboard, roles: ROLE_USER }
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
