@@ -51,4 +51,22 @@ class Controller extends BaseController
     {
         return $this->redirect($this->generateUrl($route, $parameters));
     }
+
+    /**
+     * @param $entity
+     */
+    protected function persistAndFlush($entity)
+    {
+        $em = $this->getEntityManager();
+        $em->persist($entity);
+        $em->flush($entity);
+    }
+
+    /**
+     * @return \Doctrine\Common\Persistence\ObjectManager
+     */
+    protected function getEntityManager()
+    {
+        return $this->getDoctrine()->getManager();
+    }
 }

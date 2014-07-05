@@ -42,8 +42,7 @@ class RegistrationController extends Controller
 
             $this->get('event_dispatcher')->dispatch(Events::REGISTRATION, new UserEvent($user));
 
-            $em->persist($user);
-            $em->flush();
+            $em->persistAndFlush($user);
 
             $this->setFlash('success', 'app.user.registration.success');
 
