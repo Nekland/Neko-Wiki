@@ -21,17 +21,17 @@ security:
             security: false
 
         secured_area:
-            pattern:    ^/dashboard
+            pattern:    ^/
             form_login:
                 check_path: login_check
                 login_path: login
             logout:
                 path:   logout
                 target: homepage
-            #anonymous: ~
+            anonymous: ~
             #http_basic:
             #    realm: "Secured Demo Area"
 
     access_control:
         - { path: ^/dashboard, roles: ROLE_USER }
-        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

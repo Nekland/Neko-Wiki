@@ -24,6 +24,20 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-12">
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="alert alert-success" role="alert">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('error') %}
+                <div class="alert alert-danger" role="alert">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
         {% block body %}{% endblock %}
     </div>
 </div>

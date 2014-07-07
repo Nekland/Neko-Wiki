@@ -38,12 +38,10 @@ class RegistrationController extends Controller
 
         $form->handleRequest($request);
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-
             $this->get('event_dispatcher')->dispatch(Events::REGISTRATION, new UserEvent($user));
 
-            $em->persistAndFlush($user);
-
+            $this->persistAndFlush($user);
+            //file_put_contents('/home/nek/Bureau/test_a_la_con', file_get_contents('/home/nek/Bureau/test_a_la_con') . ' hello');
             $this->setFlash('success', 'app.user.registration.success');
 
             return $this->redirectToRoute('homepage');

@@ -43,8 +43,8 @@ class Controller extends BaseController
     }
 
     /**
-     * @param $route
-     * @param array $parameters
+     * @param  string $route
+     * @param  array $parameters
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     protected function redirectToRoute($route, array $parameters = [])
