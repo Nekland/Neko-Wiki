@@ -29,8 +29,6 @@ security:
                 path:   logout
                 target: homepage
             anonymous: ~
-            #http_basic:
-            #    realm: "Secured Demo Area"
 
     access_control:
         - { path: ^/dashboard, roles: ROLE_USER }

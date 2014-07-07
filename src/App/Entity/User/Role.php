@@ -148,7 +148,7 @@ class Role implements RoleHierarchyInterface, RoleInterface
      */
     public function getReachableRoles(array $roles)
     {
-        // TODO
+        return $this->children->toArray();
     }
 
     /**
