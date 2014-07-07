@@ -21,7 +21,7 @@ class Controller extends BaseController
             ->getFlashBag()
             ->add(
                 $name,
-                $this->getTranslator($message)
+                $this->getTranslator()->trans($message)
             )
         ;
     }
