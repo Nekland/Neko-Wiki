@@ -11,4 +11,5 @@ app:
                 email:    Email :
                 submit:   Join us !
         profile:
+            profile: Profile
             welcome: Your profile

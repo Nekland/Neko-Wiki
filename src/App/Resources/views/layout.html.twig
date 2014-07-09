@@ -18,8 +18,12 @@
     <div class="row">
         <div class="col-md-12">
             <ul>
-                <li><a href="{{ path('registration') }}">{% trans %}app.user.registration.register{% endtrans %}</a></li>
-                <li><a href="{{ path('login') }}">{% trans %}app.user.registration.login{% endtrans %}</a></li>
+                {% if is_granted('ROLE_USER') %}
+                    <li><a href="{{ path('registration') }}">{% trans %}app.user.registration.register{% endtrans %}</a></li>
+                    <li><a href="{{ path('login') }}">{% trans %}app.user.registration.login{% endtrans %}</a></li>
+                    {% else %}
+                    <li><a href="{{ path('profile') }}">{% trans %}app.user.profile.profile{% endtrans %}</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>
