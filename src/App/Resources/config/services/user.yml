@@ -1,0 +1,16 @@
+parameters:
+    neko_wiki.listener.user.doctrine.class: App\Listeners\User\DoctrineUserListener
+    neko_wiki.listener.user.registration.class: App\Listeners\User\RegistrationUserListener
+
+services:
+    neko_wiki.listener.user.doctrine:
+        class: %neko_wiki.listener.user.doctrine.class%
+        arguments: [ @security.encoder_factory ]
+        tags:
+            - { name: doctrine.event_listener, event: postPersist }
+
+    neko_wiki.listener.user.registration:
+        class: %neko_wiki.listener.user.registration.class%
+        arguments: [ @doctrine.orm.entity_manager ]
+        tags:
+            - { name: kernel.event_listener, event: wiki.user.registration, method: onUserRegistration }

@@ -8,6 +8,6 @@ class ProfileController extends Controller
 {
     public function profileAction()
     {
-        return $this->render('App:User:profile.html.twig');
+        return $this->render('NekoWiki:User:profile.html.twig');
     }
 }

@@ -1,0 +1,4 @@
+imports:
+    - { resource: services/global.yml }
+    - { resource: services/form.yml }
+    - { resource: services/user.yml }

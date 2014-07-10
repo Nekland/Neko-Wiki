@@ -22,7 +22,7 @@ class RegistrationController extends Controller
     {
         $form = $this->createForm('registration');
 
-        return $this->render('App:User:register.html.twig', ['form' => $form->createView()]);
+        return $this->render('NekoWiki:User:register.html.twig', ['form' => $form->createView()]);
     }
 
     /**
@@ -49,6 +49,6 @@ class RegistrationController extends Controller
 
         $this->setFlash('error', 'app.user.registration.error');
 
-        return $this->render('App:User:register.html.twig', ['form' => $form->createView()]);
+        return $this->render('NekoWiki:User:register.html.twig', ['form' => $form->createView()]);
     }
 }

@@ -9,24 +9,28 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Config\FileLocator;
 
-class AppExtension extends Extension
+class NekoWikiExtension extends Extension
 {
 
     /**
      * Loads a specific configuration.
      *
-     * @param array $config An array of configuration values
+     * @param array $configs An array of configuration values
      * @param ContainerBuilder $container A ContainerBuilder instance
      *
      * @throws \InvalidArgumentException When provided tag is not defined in this extension
      *
      * @api
      */
-    public function load(array $config, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container)
     {
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config/services'));
-        $loader->load('global.yml');
-        $loader->load('form.yml');
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
+
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.yml');
+
     }
 
     /**
@@ -34,6 +38,6 @@ class AppExtension extends Extension
      */
     public function getAlias()
     {
-        return 'app';
+        return 'neko_wiki';
     }
 }

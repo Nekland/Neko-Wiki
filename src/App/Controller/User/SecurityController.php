@@ -34,7 +34,7 @@ class SecurityController extends Controller
         // last username entered by the user
         $lastUsername = (null === $session) ? '' : $session->get(SecurityContextInterface::LAST_USERNAME);
 
-        return $this->render('App:User:login.html.twig', ['error' => $error, 'last_username' => $lastUsername]);
+        return $this->render('NekoWiki:User:login.html.twig', ['error' => $error, 'last_username' => $lastUsername]);
     }
 
 }

@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: assetic.yml }
     - { resource: doctrine.yml }
+    - { resource: neko_wiki.yml }
 
 framework:
     #esi:             ~

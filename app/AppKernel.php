@@ -19,7 +19,7 @@ class AppKernel extends Kernel
 
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
 
-            new App\App(),
+            new App\NekoWiki(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -16,6 +16,6 @@ class HomeController extends Controller
     {
         $page_provider = $this->get('neko_wiki.provider.page');
 
-        return $this->render('App:Page:basic.html.twig', ['page' => $page_provider->getHomepage()]);
+        return $this->render('NekoWiki:Page:basic.html.twig', ['page' => $page_provider->getHomepage()]);
     }
 }
