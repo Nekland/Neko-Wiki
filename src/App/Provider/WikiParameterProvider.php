@@ -25,10 +25,15 @@ class WikiParameterProvider
      */
     public function __get($name)
     {
-        if (array_key_exists($this->parameters, $name)) {
+        if (array_key_exists($name, $this->parameters)) {
             return $this->parameters[$name];
         }
 
         throw new \InvalidArgumentException(sprintf('The parameter "%" doesn\'t exists in the wiki configuration.', $name));
+    }
+
+    function __isset($name)
+    {
+        return array_key_exists($name, $this->parameters);
     }
 }

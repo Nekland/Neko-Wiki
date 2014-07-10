@@ -30,6 +30,6 @@ class PageProvider
      */
     private function getRepository()
     {
-        return $this->em->getRepository('App:Page');
+        return $this->em->getRepository('NekoWiki:Page');
     }
 }

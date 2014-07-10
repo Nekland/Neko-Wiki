@@ -29,6 +29,10 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        parameters: "@neko_wiki.provider.wiki_parameter"
+
+
 
 
 # Swiftmailer Configuration

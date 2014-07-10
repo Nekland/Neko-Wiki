@@ -27,10 +27,20 @@ class NekoWikiExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
+        $this->setupParameterProvider($container, $config);
+    }
+
+    /**
+     * @param ContainerBuilder $container
+     * @param array $config
+     */
+    private function setupParameterProvider(ContainerBuilder $container, $config)
+    {
+        $definition = $container->getDefinition('neko_wiki.provider.wiki_parameter');
+        $definition->addArgument($config['general_parameters']);
     }
 
     /**
