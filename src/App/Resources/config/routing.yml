@@ -33,3 +33,8 @@ profile:
     path: /dashboard/profile
     defaults:
         _controller: 'NekoWiki:User/Profile:profile'
+
+admin:
+    path: /dashboard/admin
+    defaults:
+        _controller: 'NekoWiki:Admin/Admin:index'
