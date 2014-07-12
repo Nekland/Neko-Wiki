@@ -22,5 +22,5 @@ notifications:
     #     - developer@example.com
 
 script:
-    - bin/phpspec run
+    - bin/phpspec run --format nyan.cat
     - bin/behat --no-snippets --verbose

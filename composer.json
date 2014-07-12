@@ -30,7 +30,8 @@
         "behat/mink-selenium2-driver":  "*",
         "behat/mink-goutte-driver":     "*",
         "phpspec/phpspec":              "~2.0",
-        "knplabs/friendly-contexts":    "dev-master"
+        "knplabs/friendly-contexts":    "dev-master",
+        "phpspec/nyan-formatters":      "1.*"
     },
     "scripts": {
         "post-install-cmd": [
