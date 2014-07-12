@@ -1,5 +1,7 @@
 app:
     user:
+        logout: Logout
+        admin:  Administration
         registration:
             success: Thank you for register :)
             error: There's a problem with the data you sended to us :-(

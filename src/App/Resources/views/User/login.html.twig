@@ -5,19 +5,25 @@
         <div>{{ error.message }}</div>
     {% endif %}
 
-    <form action="{{ path('login_check') }}" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+    <div class="col-md-6 col-md-offset-3" id="login-box">
+        <form action="{{ path('login_check') }}" method="post">
+            <p>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="_username" class="form-control" value="{{ last_username }}" />
+            </p>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password" />
+            <p>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="_password" class="form-control" />
+            </p>
 
-        {#
-            If you want to control the URL the user
-            is redirected to on success (more details below)
-            <input type="hidden" name="_target_path" value="/account" />
-        #}
+            {#
+                If you want to control the URL the user
+                is redirected to on success (more details below)
+                <input type="hidden" name="_target_path" value="/account" />
+            #}
 
-        <button type="submit">login</button>
-    </form>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
 {% endblock body %}

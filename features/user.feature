@@ -21,5 +21,5 @@ Feature: Registration and login of a user
       And I follow "Login"
      When I fill in "Username" with "admin"
       And I fill in "Password" with "admin"
-      And I press "login"
+      And I press "Login"
      Then I should see "Your profile"
