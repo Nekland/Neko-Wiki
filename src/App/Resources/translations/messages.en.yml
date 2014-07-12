@@ -6,10 +6,11 @@ app:
             register: Register
             login: Login
             form:
-                username: Username :
-                password: Password :
-                email:    Email :
-                submit:   Join us !
+                username:       Username :
+                password:       Password :
+                password_repeat: Password again :
+                email:          Email :
+                submit:         Join us !
         profile:
             profile: Profile
             welcome: Your profile

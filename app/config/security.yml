@@ -23,8 +23,9 @@ security:
         secured_area:
             pattern:    ^/
             form_login:
-                check_path: login_check
-                login_path: login
+                check_path:          login_check
+                login_path:          login
+                default_target_path: profile
             logout:
                 path:   logout
                 target: homepage

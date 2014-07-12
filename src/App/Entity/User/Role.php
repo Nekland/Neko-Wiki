@@ -35,6 +35,7 @@ class Role implements RoleHierarchyInterface, RoleInterface, \Serializable
      * @var Role
      *
      * @ORM\ManyToOne(targetEntity="Role", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $parent;
 

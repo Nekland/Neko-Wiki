@@ -22,7 +22,12 @@ class RegistrationType extends AbstractType
             ])
             ->add('password', 'repeated', [
                 'type'  => 'password',
-                'label' => 'app.user.registration.form.password'
+                'first_options' => [
+                    'label' => 'app.user.registration.form.password'
+                ],
+                'second_options' => [
+                    'label' => 'app.user.registration.form.password_repeat'
+                ]
             ])
             ->add('email', null, [
                 'label' => 'app.user.registration.form.email'

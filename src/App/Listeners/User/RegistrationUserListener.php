@@ -25,7 +25,7 @@ class RegistrationUserListener
      */
     public function onUserRegistration(UserEvent $event)
     {
-        $roleRepository = $this->em->getRepository('App:User\Role');
+        $roleRepository = $this->em->getRepository('NekoWiki:User\Role');
         $role           = $roleRepository->getRole('ROLE_USER');
 
         $event->getUser()->addRole($role);

@@ -26,6 +26,9 @@ login:
 login_check:
     path: /login_check
 
+logout:
+    path: /logout
+
 profile:
     path: /dashboard/profile
     defaults:
