@@ -7,6 +7,7 @@ php:
 before_script:
     - composer install -n
     - ./bin/setup_test_environment.sh
+    - php app/console ser:run -e=test &
 
     # This part is for making selenium work
     # Notice that you can also use PhantomJS
@@ -21,5 +22,5 @@ notifications:
     #     - developer@example.com
 
 script:
-    - phpunit -c app
+    - bin/phpspec run
     - bin/behat --no-snippets --verbose
