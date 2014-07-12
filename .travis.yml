@@ -7,7 +7,7 @@ php:
 before_script:
     - composer install -n
     - ./bin/setup_test_environment.sh
-    - php app/console ser:run -e=test &
+    - php app/console ser:run &
 
     # This part is for making selenium work
     # Notice that you can also use PhantomJS
