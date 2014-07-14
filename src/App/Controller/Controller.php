@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Exception\WikiNotFoundHttpException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 
 /**
@@ -68,5 +69,29 @@ class Controller extends BaseController
     protected function getEntityManager()
     {
         return $this->getDoctrine()->getManager();
+    }
+
+
+//    /**
+//     * @param  string     $message
+//     * @param  \Exception $previous
+//     * @return WikiNotFoundHttpException|\Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+//     */
+//    public function createNotFoundException($message = 'Not Found', \Exception $previous = null)
+//    {
+//        $form = $this->getForm();
+//
+//        return new WikiNotFoundHttpException($form->createView(), $message, $previous);
+//    }
+
+    /**
+     * @return \Symfony\Component\Form\Form
+     */
+    protected function getForm()
+    {
+        return $this->createForm('neko_wiki_search', null, [
+            'action' => $this->generateUrl('search'),
+            'method' => 'POST'
+        ]);
     }
 }

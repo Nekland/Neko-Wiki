@@ -16,3 +16,11 @@ app:
         profile:
             profile: Profile
             welcome: Your profile
+
+    search:
+        placeholder: Search
+        submit_search: Search
+
+    errors:
+        not_found: The page you're looking for doesn't exists.
+        looking_for: Are you looking for something ?

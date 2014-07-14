@@ -35,12 +35,7 @@
                         <ul class="nav navbar-nav">
                             <li {% if app.request.get('_route') == 'homepage' %}class="active"{% endif %}><a href="{{ path('homepage') }}">Home</a></li>
                         </ul>
-                        <form class="navbar-form navbar-left" role="search">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search">
-                            </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
-                        </form>
+                        {{ render(controller('NekoWiki:Search:showSearchForm')) }}
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 {% if not is_granted('ROLE_USER') %}
@@ -80,9 +75,7 @@
             {% endfor %}
         </div>
     </div>
-    <div class="row">
-        {% block body %}{% endblock %}
-    </div>
+    {% block body %}{% endblock %}
 </div>
 {% javascripts
 '../app/Resources/assets/jquery/dist/jquery.min.js'

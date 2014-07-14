@@ -3,38 +3,26 @@ homepage:
     defaults:
         _controller: 'NekoWiki:Home:home'
 
+neko_wiki_user:
+    resource: 'routing/user.yml'
 
-#
-# User
-#
 
-registration:
-    path: /registration
+search:
+    path: /search
     defaults:
-        _controller: 'NekoWiki:User/Registration:registration'
+        _controller: 'NekoWiki:Search:searchRedirection'
+    requirements:
+        _method: POST
 
-register:
-    path: /register
+search_results:
+    path: /search/results.html
     defaults:
-        _controller: 'NekoWiki:User/Registration:register'
+        _controller: 'NekoWiki:Search:results'
+    requirements:
+        _method: GET
 
-login:
-    path: /login
+
+show_page:
+    path: /article/{page_slug}
     defaults:
-        _controller: 'NekoWiki:User/Security:login'
-
-login_check:
-    path: /login_check
-
-logout:
-    path: /logout
-
-profile:
-    path: /dashboard/profile
-    defaults:
-        _controller: 'NekoWiki:User/Profile:profile'
-
-admin:
-    path: /dashboard/admin
-    defaults:
-        _controller: 'NekoWiki:Admin/Admin:index'
+        _controller: 'NekoWiki:Page:show'

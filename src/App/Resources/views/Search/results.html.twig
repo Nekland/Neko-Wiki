@@ -1,0 +1,12 @@
+{% extends 'NekoWiki::layout.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            <h1>{% trans %}app.search.not_found{% endtrans %}</h1>
+            {{ render(controller('NekoWiki:Search:completeForm')) }}
+        </div>
+    </div>
+
+{% endblock body %}

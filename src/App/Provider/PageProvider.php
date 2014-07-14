@@ -26,6 +26,15 @@ class PageProvider
     }
 
     /**
+     * @param $title
+     * @return null|\App\Entity\Page
+     */
+    public function searchPage($title)
+    {
+        return $this->getRepository()->findOneBy(['title' => $title]);
+    }
+
+    /**
      * @return \Doctrine\ORM\EntityRepository
      */
     private function getRepository()

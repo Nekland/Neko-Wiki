@@ -1,0 +1,13 @@
+
+{{ form_start(form) }}
+
+<div class="form-group">
+    {{ form_widget(form.search, {'attr': { 'placeholder': 'app.search.placeholder'|trans, 'class': 'form-control input-lg' } } ) }}
+</div>
+
+<p class="text-center">
+    <button type="submit" class="btn btn-primary btn-lg">{% trans %}app.search.submit_search{% endtrans %}</button>
+</p>
+
+{{ form_end(form) }}
+

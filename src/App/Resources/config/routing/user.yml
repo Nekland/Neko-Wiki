@@ -1,0 +1,31 @@
+
+registration:
+    path: /registration.html
+    defaults:
+        _controller: 'NekoWiki:User/Registration:registration'
+
+register:
+    path: /register.html
+    defaults:
+        _controller: 'NekoWiki:User/Registration:register'
+
+login:
+    path: /login.html
+    defaults:
+        _controller: 'NekoWiki:User/Security:login'
+
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout
+
+profile:
+    path: /dashboard/profile.html
+    defaults:
+        _controller: 'NekoWiki:User/Profile:profile'
+
+admin:
+    path: /dashboard/admin.html
+    defaults:
+        _controller: 'NekoWiki:Admin/Admin:index'
