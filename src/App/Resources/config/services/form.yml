@@ -1,5 +1,14 @@
+parameters:
+    neko_wiki.form.search.class:       App\Form\SearchType
+    neko_wiki.form.registration.class: App\Form\RegistrationType
+
 services:
     neko_wiki.form.registration:
-        class: App\Form\RegistrationType
+        class: %neko_wiki.form.registration.class%
         tags:
-            - { name: form.type, alias: registration }
+            - { name: form.type, alias: neko_wiki_registration }
+
+    neko_wiki.form.search:
+        class: %neko_wiki.form.search.class%
+        tags:
+            - { name: form.type, alias: neko_wiki_search }

@@ -20,7 +20,7 @@ class RegistrationController extends Controller
      */
     public function registrationAction()
     {
-        $form = $this->createForm('registration');
+        $form = $this->createForm('neko_wiki_registration');
 
         return $this->render('NekoWiki:User:register.html.twig', ['form' => $form->createView()]);
     }
@@ -34,7 +34,7 @@ class RegistrationController extends Controller
     public function registerAction(Request $request)
     {
         $user = new User();
-        $form = $this->createForm('registration', $user);
+        $form = $this->createForm('neko_wiki_registration', $user);
 
         $form->handleRequest($request);
         if ($form->isValid()) {

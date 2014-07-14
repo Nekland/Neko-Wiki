@@ -54,6 +54,6 @@ class RegistrationType extends AbstractType
      */
     public function getName()
     {
-        return 'registration';
+        return 'neko_wiki_registration';
     }
 }
