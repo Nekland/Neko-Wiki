@@ -20,7 +20,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "nekland/dependency-tools":              "dev-master",
         "doctrine/doctrine-fixtures-bundle":    "2.2.*",
-        "stof/doctrine-extensions-bundle":      "~1.1@dev"
+        "stof/doctrine-extensions-bundle":      "~1.1@dev",
+        "white-october/pagerfanta-bundle":      "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle":      "~2.3",

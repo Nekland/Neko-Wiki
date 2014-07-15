@@ -20,6 +20,12 @@ app:
     search:
         placeholder: Search
         submit_search: Search
+        search: Results for your search
+        does_not_exists: The page you're searching for does not exists.
+        create_the_page_p1: 'You can create the page "'
+        create_the_page_p2: '" right now.'
+        relevant: Pages relevent with your search.
+        nothing_relevant: Sorry, absolutely nothing was found for your search :-( .
 
     errors:
         not_found: The page you're looking for doesn't exists.

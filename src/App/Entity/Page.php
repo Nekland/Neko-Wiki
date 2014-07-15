@@ -11,7 +11,7 @@ use Gedmo\Translatable\Translatable;
  * Page
  *
  * @ORM\Table(name="page")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Entity\PageRepository")
  */
 class Page implements Translatable
 {

@@ -4,8 +4,34 @@
 
     <div class="row">
         <div class="col-md-offset-2 col-md-8">
-            <h1>{% trans %}app.search.not_found{% endtrans %}</h1>
-            {{ render(controller('NekoWiki:Search:completeForm')) }}
+            <h1>{% trans %}app.search.search{% endtrans %}</h1>
+            {{ render(controller('NekoWiki:Search:completeForm', {'content' : query })) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+                <i>{% trans %}app.search.does_not_exists{% endtrans %}</i>
+                <i>
+{{ 'app.search.create_the_page_p1'|trans }}<a href="#" class="non-existant">{{ query|capitalize }}</a>{{ 'app.search.create_the_page_p2'|trans }}
+                </i>
+            </p>
+
+            <h3>{% trans %}app.search.relevant{% endtrans %}</h3>
+            {% for page in pager %}
+                PAGES....
+            {% else %}
+                <p class="nothing-found">{% trans %}app.search.nothing_relevant{% endtrans %}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+            <div class="pagerfanta">
+                {{ pagerfanta(pager, 'twitter_bootstrap3') }}
+            </div>
         </div>
     </div>
 

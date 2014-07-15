@@ -63,9 +63,12 @@ class SearchController extends Controller
             throw $this->createNotFoundException('No query for search.');
         }
 
-        $searcher = $this->get('searcher');
+        $searcher = $this->get('neko_wiki.searcher');
 
-        return $this->render('NekoWiki:Search:results.html.twig', ['relevant' => $searcher->find($query)]);
+        return $this->render('NekoWiki:Search:results.html.twig', [
+            'pager' => $searcher->find($query),
+            'query' => $query
+        ]);
     }
 
     /**
@@ -73,9 +76,12 @@ class SearchController extends Controller
      *
      * @return Response
      */
-    public function completeFormAction()
+    public function completeFormAction($content = '')
     {
-        return $this->render('NekoWiki:Search:complete_form.html.twig', ['form' => $this->getForm()->createView()]);
+        return $this->render('NekoWiki:Search:complete_form.html.twig', [
+            'form'    => $this->getForm()->createView(),
+            'content' => $content
+        ]);
     }
 
 }

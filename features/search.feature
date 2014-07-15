@@ -7,5 +7,6 @@ Feature: Search
   Scenario: homepage
     Given I am on the homepage
      When I fill in "Search" with "foo search"
-     Then I should see "Create the page \"Foo search\" on this wiki."
-      And I should see "Results of the search"
+      And I press "submit_search"
+     Then I should see "You can create the page \"Foo search\" right now."
+      And I should see "Results for your search"

@@ -1,6 +1,7 @@
 parameters:
-    neko_wiki.provider.page.class:     App\Provider\PageProvider
+    neko_wiki.provider.page.class:           App\Provider\PageProvider
     neko_wiki.provider.wiki_parameter.class: App\Provider\WikiParameterProvider
+    neko_wiki.searcher.class:                App\Search\RepositorySearch
 
 services:
     neko_wiki.provider.page:
@@ -10,3 +11,12 @@ services:
     neko_wiki.provider.wiki_parameter:
         class: %neko_wiki.provider.wiki_parameter.class%
 
+    neko_wiki.repository.page:
+        class: App\Entity\PageRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments: [ 'NekoWiki:Page' ]
+
+    neko_wiki.searcher:
+        class: %neko_wiki.searcher.class%
+        arguments: [ @neko_wiki.repository.page ]
