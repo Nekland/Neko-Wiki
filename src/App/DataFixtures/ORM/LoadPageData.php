@@ -16,12 +16,27 @@ class LoadPageData extends AbstractFixture
     function load(ObjectManager $manager)
     {
         $page = new Page();
+        $page2 = new Page();
+
         $page
             ->setTitle('Home')
             ->setContent('Hello i am the homepage. Change me by connect yourself.')
         ;
+        $page2
+            ->setTitle('Help')
+            ->setContent(
+<<<Markdown
+Welcome to the help
+===================
+
+This page is editable as any other page !
+
+Markdown
+            )
+        ;
 
         $manager->persist($page);
+        $manager->persist($page2);
         $manager->flush();
     }
 }

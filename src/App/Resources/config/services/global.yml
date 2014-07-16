@@ -2,6 +2,7 @@ parameters:
     neko_wiki.provider.page.class:           App\Provider\PageProvider
     neko_wiki.provider.wiki_parameter.class: App\Provider\WikiParameterProvider
     neko_wiki.searcher.class:                App\Search\RepositorySearch
+    neko_wiki.param_converter.page.class:    App\ParamConverter\PageParamConverter
 
 services:
     neko_wiki.provider.page:
@@ -20,3 +21,14 @@ services:
     neko_wiki.searcher:
         class: %neko_wiki.searcher.class%
         arguments: [ @neko_wiki.repository.page ]
+
+    neko_wiki.param_converter.page:
+        class: %neko_wiki.param_converter.page.class%
+        arguments: [ @neko_wiki.repository.page ]
+        tags:
+            - { name: request.param_converter, priority: 20 }
+
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }

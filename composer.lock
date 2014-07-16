@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "718ffdf58132bd8db9d5892d270579ef",
+    "hash": "7e1a3e3ff7c57545fc099fd9111d3318",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1228,17 +1228,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.1",
+            "version": "v3.0.2",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "e9caa300faf95076c8e27693f3fdb0bb6e3148c0"
+                "reference": "67b34359f91c25ad36b960f66a287df0615d7c54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/e9caa300faf95076c8e27693f3fdb0bb6e3148c0",
-                "reference": "e9caa300faf95076c8e27693f3fdb0bb6e3148c0",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/67b34359f91c25ad36b960f66a287df0615d7c54",
+                "reference": "67b34359f91c25ad36b960f66a287df0615d7c54",
                 "shasum": ""
             },
             "require": {
@@ -1283,7 +1283,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2014-06-06 02:53:20"
+            "time": "2014-07-16 07:46:27"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -1341,6 +1341,68 @@
                 "controllers"
             ],
             "time": "2014-05-22 23:27:44"
+        },
+        {
+            "name": "sonata-project/intl-bundle",
+            "version": "2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sonata-project/SonataIntlBundle.git",
+                "reference": "0aa5e8997b0814986654a13569d532284451e9c3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/0aa5e8997b0814986654a13569d532284451e9c3",
+                "reference": "0aa5e8997b0814986654a13569d532284451e9c3",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/dependency-injection": "~2.2",
+                "symfony/http-kernel": "~2.2",
+                "symfony/locale": "~2.2",
+                "symfony/templating": "~2.2",
+                "twig/twig": "*"
+            },
+            "require-dev": {
+                "sonata-project/user-bundle": "~2.2",
+                "symfony/security": "~2.2"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sonata\\IntlBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Rabaix",
+                    "email": "thomas.rabaix@sonata-project.org",
+                    "homepage": "http://sonata-project.org"
+                },
+                {
+                    "name": "Sonata Community",
+                    "homepage": "https://github.com/sonata-project/SonataIntlBundle/contributors"
+                }
+            ],
+            "description": "Symfony SonataIntlBundle",
+            "homepage": "http://sonata-project.org/bundles/intl",
+            "keywords": [
+                "date",
+                "intl",
+                "number",
+                "sonata",
+                "time"
+            ],
+            "time": "2014-02-14 14:25:22"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
@@ -1690,16 +1752,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.5.1",
+            "version": "v2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "e3d2844abc988bc467bb1593cd340700096b0ac0"
+                "reference": "e66ee967571b89234c90946fe0d50dad195ad29c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/e3d2844abc988bc467bb1593cd340700096b0ac0",
-                "reference": "e3d2844abc988bc467bb1593cd340700096b0ac0",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/e66ee967571b89234c90946fe0d50dad195ad29c",
+                "reference": "e66ee967571b89234c90946fe0d50dad195ad29c",
                 "shasum": ""
             },
             "require": {
@@ -1802,7 +1864,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-07-08 14:42:08"
+            "time": "2014-07-15 15:39:46"
         },
         {
             "name": "twig/extensions",
@@ -2687,12 +2749,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/FriendlyContexts.git",
-                "reference": "88375a31b97d6a749976922f6cff4c04b9cc97c6"
+                "reference": "8c177bc51720ab16764a092b373f45203a8375f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/FriendlyContexts/zipball/88375a31b97d6a749976922f6cff4c04b9cc97c6",
-                "reference": "88375a31b97d6a749976922f6cff4c04b9cc97c6",
+                "url": "https://api.github.com/repos/KnpLabs/FriendlyContexts/zipball/8c177bc51720ab16764a092b373f45203a8375f6",
+                "reference": "8c177bc51720ab16764a092b373f45203a8375f6",
                 "shasum": ""
             },
             "require": {
@@ -2732,7 +2794,7 @@
                 }
             ],
             "description": "Some BEHAT contexts",
-            "time": "2014-07-15 14:23:13"
+            "time": "2014-07-16 13:42:43"
         },
         {
             "name": "nelmio/alice",
@@ -2790,21 +2852,21 @@
         },
         {
             "name": "phpspec/nyan-formatters",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/nyan-formatters.git",
-                "reference": "44c8e1e558b2dad4d25a20fc6669cf98e65c17db"
+                "reference": "4aaef7454dc037208074798a34844e02300c33df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/nyan-formatters/zipball/44c8e1e558b2dad4d25a20fc6669cf98e65c17db",
-                "reference": "44c8e1e558b2dad4d25a20fc6669cf98e65c17db",
+                "url": "https://api.github.com/repos/phpspec/nyan-formatters/zipball/4aaef7454dc037208074798a34844e02300c33df",
+                "reference": "4aaef7454dc037208074798a34844e02300c33df",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
-                "phpspec/phpspec": "2.0.*@dev",
+                "phpspec/phpspec": "~2.0",
                 "whatthejeff/nyancat-scoreboard": "~1.1"
             },
             "type": "extension",
@@ -2838,7 +2900,7 @@
                 "nyan",
                 "phpspec"
             ],
-            "time": "2014-01-05 11:51:13"
+            "time": "2014-07-16 13:27:03"
         },
         {
             "name": "phpspec/php-diff",
@@ -2875,16 +2937,16 @@
         },
         {
             "name": "phpspec/phpspec",
-            "version": "2.0.1",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/phpspec.git",
-                "reference": "61712147412cb647b6cb68b19833a60bfda759a1"
+                "reference": "bded1df9e0302facf979509ffe12e4744fcbb371"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/61712147412cb647b6cb68b19833a60bfda759a1",
-                "reference": "61712147412cb647b6cb68b19833a60bfda759a1",
+                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/bded1df9e0302facf979509ffe12e4744fcbb371",
+                "reference": "bded1df9e0302facf979509ffe12e4744fcbb371",
                 "shasum": ""
             },
             "require": {
@@ -2910,7 +2972,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-develop": "2.1.x-dev",
+                    "dev-master": "2.1.x-dev"
                 }
             },
             "autoload": {
@@ -2944,7 +3007,7 @@
                 "testing",
                 "tests"
             ],
-            "time": "2014-07-01 14:09:19"
+            "time": "2014-07-05 12:55:52"
         },
         {
             "name": "phpspec/prophecy",
@@ -3168,6 +3231,7 @@
         "stof/doctrine-extensions-bundle": 20,
         "white-october/pagerfanta-bundle": 20,
         "behat/mink-extension": 20,
+        "phpspec/phpspec": 20,
         "knplabs/friendly-contexts": 20
     },
     "platform": {

@@ -11,15 +11,54 @@ class PageRepository extends EntityRepository
      * @param  string $query
      * @return \Doctrine\ORM\QueryBuilder
      */
-    public function createSearchQb($query)
+    public function createSearchContentQb($query)
     {
         $qb = $this->createQueryBuilder('p');
 
         $qb
             ->where($qb->expr()->like('p.content', ':query'))
-            ->setParameter('query', $query)
+            ->setParameter('query', '%' . $query . '%')
         ;
 
         return $qb;
+    }
+
+    /**
+     * @param  string $query
+     * @return Page[]
+     */
+    public function createSearchTitle($query)
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        $qb
+            ->where($qb->expr()->like('p.content', ':query'))
+            ->setParameter('query', '%' . $query . '%')
+        ;
+
+        return $qb->getQuery()->execute();
+    }
+
+    /**
+     * @param  string $slug
+     * @return Page|null
+     */
+    public function findBySlug($slug)
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb
+            ->where($qb->expr()->eq('p.titleSlug', ':slug'))
+            ->setParameter('slug', $slug)
+        ;
+
+        $pages = $qb->getQuery()->execute();
+
+        if (empty($pages)) {
+            $pages = null;
+        } else {
+            $pages = $pages[0];
+        }
+
+        return $pages;
     }
 }

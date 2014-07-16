@@ -19,6 +19,7 @@ class AppKernel extends Kernel
 
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+            new Sonata\IntlBundle\SonataIntlBundle(),
 
             new App\NekoWiki(),
         );

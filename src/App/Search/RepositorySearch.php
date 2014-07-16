@@ -21,7 +21,7 @@ class RepositorySearch implements SearcherInterface
 
     public function find($query)
     {
-        $adapter = new DoctrineORMAdapter($this->repository->createSearchQb($query));
+        $adapter = new DoctrineORMAdapter($this->repository->createSearchContentQb($query));
 
         return new Pagerfanta($adapter);
     }

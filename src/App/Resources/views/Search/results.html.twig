@@ -20,7 +20,11 @@
 
             <h3>{% trans %}app.search.relevant{% endtrans %}</h3>
             {% for page in pager %}
-                PAGES....
+                <div class="search-result">
+                    <p class="heading"><a href="{{ path('show_page', {'page_slug': page.titleSlug}) }}">{{ page.title }}</a></p>
+                    <p class="description">{{ page.content|truncate(200) }}</p>
+                    <p class="more">{% trans %}app.search.last_update{% endtrans %} {{ page.updatedAt | format_datetime }}</p>
+                </div>
             {% else %}
                 <p class="nothing-found">{% trans %}app.search.nothing_relevant{% endtrans %}</p>
             {% endfor %}
