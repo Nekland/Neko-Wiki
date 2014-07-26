@@ -1,28 +1,8 @@
-homepage:
+langage_redirection:
     path: /
     defaults:
-        _controller: 'NekoWiki:Home:home'
+        _controller: 'NekoWiki:Home:language'
 
-neko_wiki_user:
-    resource: 'routing/user.yml'
-
-
-search:
-    path: /search
-    defaults:
-        _controller: 'NekoWiki:Search:searchRedirection'
-    requirements:
-        _method: POST
-
-search_results:
-    path: /search/results.html
-    defaults:
-        _controller: 'NekoWiki:Search:results'
-    requirements:
-        _method: GET
-
-
-show_page:
-    path: /article/{page_slug}
-    defaults:
-        _controller: 'NekoWiki:Page:show'
+neko_wiki_main:
+    prefix: /{_locale}
+    resource: 'routing/global.yml'

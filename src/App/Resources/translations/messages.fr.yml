@@ -1,0 +1,34 @@
+app:
+    user:
+        logout: Déconnexion
+        admin:  Administration
+        members: Utilisateurs
+        registration:
+            success: Bienvenue parmis nous :)
+            error: Il y a un problème avec les données que vous nous avez envoyées :-(
+            register: Enregistrement
+            login: Connexion
+            form:
+                username:        Nom d'utilisateur :
+                password:        Mot de passe :
+                password_repeat: Retapez votre mot de passe :
+                email:           Adresse email :
+                submit:          Rejoignez nous !
+        profile:
+            profile: Profil
+            welcome: Votre profil
+
+    search:
+        placeholder:        Recherche
+        submit_search:      Rechercher
+        search:             Résultats de votre recherche
+        does_not_exists:    La page que vous recherchez n'existe pas.
+        create_the_page_p1: 'Vous pouvez créer la page "'
+        create_the_page_p2: '" maintenant.'
+        relevant:           Pages en rapport avec votre recherche.
+        nothing_relevant:   Désolé, nous n'avons absolument rien trouvé pour votre recherche :-( .
+        last_update:        Dernière mise à jour :
+
+    errors:
+        not_found: La page que vous cherchez n'existe pas.
+        looking_for: Vous cherchez quelque chose ?

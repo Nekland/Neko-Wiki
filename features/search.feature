@@ -4,7 +4,8 @@ Feature: Search
   I should be able to type words in the search bar
   And get a list of results
 
-  Scenario: homepage
+  @smartStep
+  Scenario: I search the page foo search
     Given I am on the homepage
      When I fill in "Search" with "foo search"
       And I press "submit_search"

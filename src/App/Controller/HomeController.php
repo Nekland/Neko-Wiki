@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * Class HomeController
@@ -17,5 +17,14 @@ class HomeController extends Controller
         $page_provider = $this->get('neko_wiki.provider.page');
 
         return $this->render('NekoWiki:Page:basic.html.twig', ['page' => $page_provider->getHomepage()]);
+    }
+
+    public function languageAction(Request $request)
+    {
+        $language = explode('_', $request->getPreferredLanguage())[0];
+        $this->getSession()->set('_locale', $language);
+        $request->setLocale($language);
+
+        return $this->redirectToRoute('homepage', ['_locale' => $language]);
     }
 }

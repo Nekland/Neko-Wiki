@@ -9,7 +9,6 @@ default:
                 - Behat\MinkExtension\Context\MinkContext
                 - Context\FixtureContext
     extensions:
-        Knp\FriendlyContexts\Extension: ~
         Behat\MinkExtension\ServiceContainer\MinkExtension:
 
             # You have probably somthing like "myproject.dev" instead of "localhost"
@@ -24,3 +23,6 @@ default:
             # Usefull when you use the "And show last response" command
             # You can change it to `firefox %s` or maybe `google_chrome %s`
             show_cmd: chrome %s
+
+        Knp\FriendlyContexts\Extension:
+            smartTag: smartStep

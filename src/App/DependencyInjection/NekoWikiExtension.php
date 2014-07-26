@@ -11,7 +11,6 @@ use Symfony\Component\Config\FileLocator;
 
 class NekoWikiExtension extends Extension
 {
-
     /**
      * Loads a specific configuration.
      *

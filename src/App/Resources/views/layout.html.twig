@@ -39,7 +39,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 {% if not is_granted('ROLE_USER') %}
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Members <span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans %}app.user.members{% endtrans %} <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a href="{{ path('registration') }}">{% trans %}app.user.registration.register{% endtrans %}</a></li>
                                         <li><a href="{{ path('login') }}">{% trans %}app.user.registration.login{% endtrans %}</a></li>

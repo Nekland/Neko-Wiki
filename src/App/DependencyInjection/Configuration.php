@@ -31,8 +31,17 @@ class Configuration implements ConfigurationInterface
     private function buildGlobalParametersConfig(NodeBuilder $root)
     {
         $root->arrayNode('general_parameters')
+            ->addDefaultsIfNotSet()
                 ->children()
                     ->scalarNode('title')->defaultValue('Neko Wiki')->end()
+                    ->arrayNode('langages')
+                        ->defaultValue(['en'])
+                        ->validate()
+                        ->ifTrue(function($languages) { foreach($languages as $lang) { if(!preg_match('/^[a-z]{2}$/', $lang)) return true;  } return false; })
+                            ->thenInvalid('The format of languages in configuration is 2 characters.')
+                        ->end()
+                        ->prototype('scalar')->end()
+                    ->end()
                 ->end()
         ->end();
     }
