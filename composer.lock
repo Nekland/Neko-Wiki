@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "174855cf0cc7b6945fddf495d47194ea",
+    "hash": "6412c6d15152fb03dbc0572d51483203",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -928,6 +928,66 @@
             "time": "2014-01-12 16:20:24"
         },
         {
+            "name": "knplabs/doctrine-behaviors",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/DoctrineBehaviors.git",
+                "reference": "f2d424d198946aef5b0073ed11184828754dac52"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/DoctrineBehaviors/zipball/f2d424d198946aef5b0073ed11184828754dac52",
+                "reference": "f2d424d198946aef5b0073ed11184828754dac52",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/common": ">=2.2",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "doctrine/mongodb-odm": "dev-master",
+                "doctrine/orm": ">=2.2",
+                "ext-pdo_pgsql": "*",
+                "ext-pdo_sqlite": "*",
+                "phpunit/phpunit": "~3.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Knp\\DoctrineBehaviors": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Knplabs",
+                    "homepage": "http://knplabs.com"
+                }
+            ],
+            "description": "Doctrine2 behavior traits",
+            "homepage": "http://knplabs.com",
+            "keywords": [
+                "Blameable",
+                "behaviors",
+                "doctrine2",
+                "filterable",
+                "softdeletable",
+                "timestampable",
+                "translatable",
+                "tree"
+            ],
+            "time": "2014-07-24 08:44:16"
+        },
+        {
             "name": "knplabs/knp-markdown-bundle",
             "version": "1.3.2",
             "target-dir": "Knp/Bundle/MarkdownBundle",
@@ -1695,20 +1755,21 @@
         },
         {
             "name": "symfony/icu",
-            "version": "v1.2.1",
+            "version": "v1.2.2",
             "target-dir": "Symfony/Component/Icu",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Icu.git",
-                "reference": "98e197da54df1f966dd5e8a4992135703569c987"
+                "reference": "d4d85d6055b87f394d941b45ddd3a9173e1e3d2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Icu/zipball/98e197da54df1f966dd5e8a4992135703569c987",
-                "reference": "98e197da54df1f966dd5e8a4992135703569c987",
+                "url": "https://api.github.com/repos/symfony/Icu/zipball/d4d85d6055b87f394d941b45ddd3a9173e1e3d2a",
+                "reference": "d4d85d6055b87f394d941b45ddd3a9173e1e3d2a",
                 "shasum": ""
             },
             "require": {
+                "ext-intl": "*",
                 "lib-icu": ">=4.4",
                 "php": ">=5.3.3",
                 "symfony/intl": "~2.3"
@@ -1739,7 +1800,7 @@
                 "icu",
                 "intl"
             ],
-            "time": "2013-10-04 10:06:38"
+            "time": "2014-07-25 09:58:17"
         },
         {
             "name": "symfony/monolog-bundle",
@@ -2856,12 +2917,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/FriendlyContexts.git",
-                "reference": "ff3e4b5a69335980179d5e61fa8d818b288681a1"
+                "reference": "2c9ba36447bf6ffae309dab60b700baa2ec431c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/FriendlyContexts/zipball/ff3e4b5a69335980179d5e61fa8d818b288681a1",
-                "reference": "ff3e4b5a69335980179d5e61fa8d818b288681a1",
+                "url": "https://api.github.com/repos/KnpLabs/FriendlyContexts/zipball/2c9ba36447bf6ffae309dab60b700baa2ec431c1",
+                "reference": "2c9ba36447bf6ffae309dab60b700baa2ec431c1",
                 "shasum": ""
             },
             "require": {
@@ -2896,12 +2957,11 @@
                 },
                 {
                     "name": "Pedrotroller",
-                    "email": "plazanet.pierre@gmail.com",
                     "homepage": "https://github.com/PedroTroller"
                 }
             ],
             "description": "Some BEHAT contexts",
-            "time": "2014-07-19 11:39:30"
+            "time": "2014-07-25 13:14:53"
         },
         {
             "name": "nelmio/alice",
@@ -3097,12 +3157,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/phpspec.git",
-                "reference": "bded1df9e0302facf979509ffe12e4744fcbb371"
+                "reference": "7a660c7057823a63fcf2696494cb4ed1de1b04f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/bded1df9e0302facf979509ffe12e4744fcbb371",
-                "reference": "bded1df9e0302facf979509ffe12e4744fcbb371",
+                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/7a660c7057823a63fcf2696494cb4ed1de1b04f9",
+                "reference": "7a660c7057823a63fcf2696494cb4ed1de1b04f9",
                 "shasum": ""
             },
             "require": {
@@ -3128,8 +3188,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-develop": "2.1.x-dev",
-                    "dev-master": "2.1.x-dev"
+                    "dev-develop": "2.1.x-dev"
                 }
             },
             "autoload": {
@@ -3163,7 +3222,7 @@
                 "testing",
                 "tests"
             ],
-            "time": "2014-07-05 12:55:52"
+            "time": "2014-07-26 08:58:40"
         },
         {
             "name": "phpspec/prophecy",
@@ -3389,6 +3448,7 @@
         "nekland/dependency-tools": 20,
         "stof/doctrine-extensions-bundle": 20,
         "white-october/pagerfanta-bundle": 20,
+        "knplabs/doctrine-behaviors": 20,
         "behat/mink-extension": 20,
         "phpspec/phpspec": 20,
         "knplabs/friendly-contexts": 20

@@ -17,4 +17,15 @@ class PageController extends Controller
             'page' => $page
         ]);
     }
+
+    public function editAction(Page $page = null)
+    {
+        $form = $this->createForm('neko_wiki_page', $page);
+
+        return $this->render('NekoWiki:Page:edit.html.twig', [
+            'form'      => $form->createView(),
+            'page'      => $page,
+            'languages' => $this->get('neko_wiki.provider.language')->getLanguages()
+        ]);
+    }
 }

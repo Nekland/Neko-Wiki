@@ -36,6 +36,6 @@ stof_doctrine_extensions:
     orm:
         default:
             timestampable: true
-            translatable:  true
+            translatable:  false
             loggable:      true
             sluggable:     true

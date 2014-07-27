@@ -34,7 +34,7 @@ class Configuration implements ConfigurationInterface
             ->addDefaultsIfNotSet()
                 ->children()
                     ->scalarNode('title')->defaultValue('Neko Wiki')->end()
-                    ->arrayNode('langages')
+                    ->arrayNode('languages')
                         ->defaultValue(['en'])
                         ->validate()
                         ->ifTrue(function($languages) { foreach($languages as $lang) { if(!preg_match('/^[a-z]{2}$/', $lang)) return true;  } return false; })

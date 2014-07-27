@@ -1,0 +1,10 @@
+<div class="{{ not hidden ?: 'hidden' }}" data-language="{{ translation.locale.vars.value }}">
+    <div class="form-group">
+        {{ form_label(translation.title) }}
+        {{ form_widget(translation.title, { 'attr': { 'class': 'form-control' } }) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(translation.content) }}
+        {{ form_widget(translation.content, { 'attr': { 'class': 'form-control page-content' } }) }}
+    </div>
+</div>

@@ -37,6 +37,8 @@ Markdown
 
         $manager->persist($page);
         $manager->persist($page2);
+        $page->mergeNewTranslations();
+        $page2->mergeNewTranslations();
         $manager->flush();
     }
 }

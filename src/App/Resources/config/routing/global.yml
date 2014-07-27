@@ -1,11 +1,13 @@
+# routing imports
+neko_wiki_user:
+    resource: 'user.yml'
+
+
+# no category routes
 homepage:
     path: /
     defaults:
         _controller: 'NekoWiki:Home:home'
-
-neko_wiki_user:
-    resource: 'user.yml'
-
 
 search:
     path: /search
@@ -22,7 +24,12 @@ search_results:
         _method: GET
 
 
+edit_page:
+    path: /article/{page_slug}/modify
+    defaults:
+        _controller: 'NekoWiki:Page:edit'
+
 show_page:
     path: /article/{page_slug}
     defaults:
-        _controller: 'NekoWiki:Page:show'
+        _controller:  'NekoWiki:Page:show'

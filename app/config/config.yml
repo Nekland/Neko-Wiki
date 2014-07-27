@@ -4,6 +4,7 @@ imports:
     - { resource: assetic.yml }
     - { resource: doctrine.yml }
     - { resource: neko_wiki.yml }
+    - { resource: ../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml }
 
 framework:
     #esi:             ~

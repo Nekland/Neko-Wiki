@@ -1,3 +1,6 @@
 neko_wiki:
     general_parameters:
         title: Nekland Wiki \o/
+        languages:
+            - fr
+            - en

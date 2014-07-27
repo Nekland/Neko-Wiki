@@ -30,6 +30,9 @@ class NekoWikiExtension extends Extension
         $loader->load('services.yml');
 
         $this->setupParameterProvider($container, $config);
+
+        $definition = $container->getDefinition('neko_wiki.provider.language');
+        $definition->addArgument($config['general_parameters']['languages']);
     }
 
     /**

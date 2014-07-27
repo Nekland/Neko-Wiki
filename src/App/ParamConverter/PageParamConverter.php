@@ -3,18 +3,21 @@
 namespace App\ParamConverter;
 
 
-use App\Entity\PageRepository;
+use App\Provider\PageProvider;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\ParamConverterInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 class PageParamConverter implements ParamConverterInterface
 {
-    private $repository;
+    /**
+     * @var \App\Provider\PageProvider
+     */
+    private $provider;
 
-    public function __construct(PageRepository $repository)
+    public function __construct(PageProvider $provider)
     {
-        $this->repository = $repository;
+        $this->provider = $provider;
     }
 
     /**
@@ -28,7 +31,8 @@ class PageParamConverter implements ParamConverterInterface
     public function apply(Request $request, ParamConverter $configuration)
     {
         $slug = $request->attributes->get('page_slug');
-        $page = $this->repository->findBySlug($slug);
+        $page = $this->provider->findPageBySlug($slug);
+
         $request->attributes->set('page', $page);
 
         return true;

@@ -30,5 +30,15 @@ app:
         last_update:        Dernière mise à jour :
 
     errors:
-        not_found: La page que vous cherchez n'existe pas.
+        not_found:   La page que vous cherchez n'existe pas.
         looking_for: Vous cherchez quelque chose ?
+
+    page:
+        menu:
+            page:   Page
+            modify: Modifier
+        form:
+            add_translation: Ajouter une traduction
+            content: Contenu
+            title: Titre
+            submit: Enregistrer

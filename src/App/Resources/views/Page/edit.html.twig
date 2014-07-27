@@ -1,0 +1,49 @@
+{% extends 'NekoWiki::page_layout.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                        {% trans %}app.page.form.add_translation{% endtrans %}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        {% for abbr, language in languages %}
+                            {% if app.request.locale != abbr %}
+                                <li><a href="#">{{ language|capitalize }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_start(form) }}
+
+            {% for translation in form.translations %}
+                {% if translation.locale.vars.value == app.request.locale %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{ include(
+                                'NekoWiki:Page:_translation_form.html.twig',
+                                { 'hidden': false, 'translation': translation }
+                            ) }}
+                        </div>
+                    </div>
+                {% else %}
+                    {{ include(
+                        'NekoWiki:Page:_translation_form.html.twig',
+                        { 'hidden': true, 'translation': translation }
+                    ) }}
+                {% endif %}
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary">{% trans %}app.page.form.submit{% endtrans %}</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

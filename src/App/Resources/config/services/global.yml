@@ -1,13 +1,15 @@
 parameters:
-    neko_wiki.provider.page.class:           App\Provider\PageProvider
     neko_wiki.provider.wiki_parameter.class: App\Provider\WikiParameterProvider
-    neko_wiki.searcher.class:                App\Search\RepositorySearch
-    neko_wiki.param_converter.page.class:    App\ParamConverter\PageParamConverter
+    neko_wiki.event.subscriber.locale.class: App\Event\Subscribers\LocaleListener
+    neko_wiki.provider.languages.class:      App\Provider\LanguageProvider
 
 services:
 
     neko_wiki.provider.wiki_parameter:
         class: %neko_wiki.provider.wiki_parameter.class%
+
+    neko_wiki.provider.language:
+        class: %neko_wiki.provider.languages.class%
 
     twig.extension.text:
         class: Twig_Extensions_Extension_Text
@@ -15,7 +17,7 @@ services:
             - { name: twig.extension }
 
     neko_wiki.event.subscriber.locale:
-        class: App\Event\Subscribers\LocaleListener
+        class: %neko_wiki.event.subscriber.locale.class%
         arguments: ["%kernel.default_locale%"]
         tags:
             - { name: kernel.event_subscriber }

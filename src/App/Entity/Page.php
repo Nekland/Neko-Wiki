@@ -5,7 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Gedmo\Translatable\Translatable;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * Page
@@ -13,8 +13,9 @@ use Gedmo\Translatable\Translatable;
  * @ORM\Table(name="page")
  * @ORM\Entity(repositoryClass="App\Entity\PageRepository")
  */
-class Page implements Translatable
+class Page
 {
+    use ORMBehaviors\Translatable\Translatable;
     /**
      * @var integer
      *
@@ -23,32 +24,6 @@ class Page implements Translatable
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @Gedmo\Translatable
-     * @ORM\Column(name="title", type="string", length=255)
-     */
-    private $title;
-
-    /**
-     * @var string
-     *
-     * @Gedmo\Translatable
-     * @Gedmo\Slug(fields={"title"}, unique=true)
-     * @ORM\Column(name="title_slug", unique=true)
-     */
-    private $titleSlug;
-
-    /**
-     * @var string
-     *
-     * @Gedmo\Translatable
-     * @ORM\Column(name="content", type="text")
-     */
-    private $content;
-
     /**
      * @var \DateTime
      *
@@ -72,13 +47,6 @@ class Page implements Translatable
      */
     private $tags;
 
-    /**
-     * @Gedmo\Locale
-     * Used locale to override Translation listener`s locale
-     * this is not a mapped field of entity metadata, just a simple property
-     */
-    private $locale;
-
     public function __construct()
     {
         $this->tags = new ArrayCollection();
@@ -92,52 +60,6 @@ class Page implements Translatable
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     * @return Page
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string 
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * Set content
-     *
-     * @param  string $content
-     * @return Page
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
-
-        return $this;
-    }
-
-    /**
-     * Get content
-     *
-     * @return string 
-     */
-    public function getContent()
-    {
-        return $this->content;
     }
 
     /**
@@ -179,22 +101,6 @@ class Page implements Translatable
     }
 
     /**
-     * @return string
-     */
-    public function getTitleSlug()
-    {
-        return $this->titleSlug;
-    }
-
-    /**
-     * @param string $locale
-     */
-    public function setTranslatableLocale($locale)
-    {
-        $this->locale = $locale;
-    }
-
-    /**
      * @param  ArrayCollection $tags
      * @return self
      */
@@ -210,5 +116,14 @@ class Page implements Translatable
     public function getTags()
     {
         return $this->tags;
+    }
+
+    public function __call($method, $arguments)
+    {
+        if (strpos($method, 'get') !== 0 && strpos($method, 'set') !== 0) {
+            $method = 'get' . ucfirst($method);
+        }
+
+        return $this->proxyCurrentLocaleTranslation($method, $arguments);
     }
 }

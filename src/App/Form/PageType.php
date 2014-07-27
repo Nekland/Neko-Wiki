@@ -6,13 +6,16 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('content', 'translation_collection', [
-            'type' => 'text_translation',
+        $builder->add('translations', 'collection', [
+            'type'      => new PageTranslationType(),
+            'allow_add' => true,
+            'label'     => false
         ]);
     }
 
@@ -20,13 +23,15 @@ class PageType extends AbstractType
     {
     }
 
-    /**
-     * Returns the name of this type.
-     *
-     * @return string The name of this type
-     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => 'App\Entity\Page'
+        ]);
+    }
+
     public function getName()
     {
-        return 'page';
+        return 'neko_wiki_page';
     }
 }

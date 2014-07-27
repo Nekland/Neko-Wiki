@@ -1,3 +1,6 @@
+parameters:
+    neko_wiki.searcher.class: App\Search\RepositorySearch
+
 services:
     neko_wiki.searcher:
         class: %neko_wiki.searcher.class%
