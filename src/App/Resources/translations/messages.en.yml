@@ -39,6 +39,6 @@ app:
             modify: Modify
         form:
             add_translation: Add a translation
-            content: Content
-            title:   Title
+            content: Content (%lang%)
+            title:   Title (%lang%)
             submit: Save

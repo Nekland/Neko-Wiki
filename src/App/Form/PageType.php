@@ -14,6 +14,11 @@ class PageType extends AbstractType
     {
         $builder->add('translations', 'collection', [
             'type'      => new PageTranslationType(),
+            'allow_add' => false,
+            'label'     => false
+        ]);
+        $builder->add('newTranslations', 'collection', [
+            'type'      => new PageTranslationType(),
             'allow_add' => true,
             'label'     => false
         ]);

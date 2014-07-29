@@ -10,8 +10,12 @@ class PageTranslationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('content', null, [ 'label' => 'app.page.form.content' ]);
-        $builder->add('title', null, [ 'label' => 'app.page.form.title' ]);
+        $builder->add('title', null, [
+            'label' => 'app.page.form.title'
+        ]);
+        $builder->add('content', null, [
+            'label' => 'app.page.form.content'
+        ]);
         $builder->add('locale', 'hidden');
     }
 
