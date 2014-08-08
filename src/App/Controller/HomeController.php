@@ -12,13 +12,13 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class HomeController extends Controller
 {
-    public function homeAction()
-    {
-        $page_provider = $this->get('neko_wiki.provider.page');
 
-        return $this->render('NekoWiki:Page:basic.html.twig', ['page' => $page_provider->getHomepage()]);
-    }
-
+    /**
+     * Real homepage redirecting to right home
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function languageAction(Request $request)
     {
         $language = explode('_', $request->getPreferredLanguage())[0];
@@ -26,5 +26,24 @@ class HomeController extends Controller
         $request->setLocale($language);
 
         return $this->redirectToRoute('homepage', ['_locale' => $language]);
+    }
+    
+    public function homeAction()
+    {
+        $page_provider = $this->get('neko_wiki.provider.page');
+
+        return $this->render('NekoWiki:Page:basic.html.twig', ['page' => $page_provider->getHomepage()]);
+    }
+
+    public function footerAction()
+    {
+        return $this->render('NekoWiki:Home:_footer.html.twig');
+    }
+
+    public function languagePartialAction()
+    {
+        return $this->render('NekoWiki:Home:_languages.html.twig', [
+            'languages' => $this->get('neko_wiki.provider.language')->getLanguages()
+        ]);
     }
 }

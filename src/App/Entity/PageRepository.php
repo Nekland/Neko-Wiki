@@ -9,15 +9,20 @@ class PageRepository extends EntityRepository
 {
     /**
      * @param  string $query
+     * @param  string $locale
      * @return \Doctrine\ORM\QueryBuilder
      */
-    public function createSearchContentQb($query)
+    public function createSearchContentQb($query, $locale='en')
     {
         $qb = $this->createQueryBuilder('p');
 
+        $qb->innerJoin('p.translations', 'pt');
+
         $qb
-            ->where($qb->expr()->like('p.content', ':query'))
+            ->where($qb->expr()->like('pt.content', ':query'))
+            ->andWhere($qb->expr()->eq('pt.locale', ':locale'))
             ->setParameter('query', '%' . $query . '%')
+            ->setParameter('locale', $locale)
         ;
 
         return $qb;

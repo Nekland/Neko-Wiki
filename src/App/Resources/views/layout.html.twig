@@ -77,6 +77,8 @@
         </div>
     </div>
     {% block body %}{% endblock %}
+
+    {{ render(controller('NekoWiki:Home:footer')) }}
 </div>
 {% javascripts
     '../app/Resources/assets/jquery/dist/jquery.min.js'

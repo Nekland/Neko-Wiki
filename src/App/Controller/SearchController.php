@@ -74,6 +74,7 @@ class SearchController extends Controller
     /**
      * Show partial but big search form
      *
+     * @param string $content
      * @return Response
      */
     public function completeFormAction($content = '')
