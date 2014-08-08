@@ -34,9 +34,6 @@ twig:
         parameters: "@neko_wiki.provider.wiki_parameter"
         language_manager: "@neko_wiki.language.manager"
 
-
-
-
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"

@@ -5,7 +5,7 @@
             {% for translation in translations %}
                 {% if languages[translation.locale] is defined %}
                     <li>
-                        <a href="{{ path('show_page', {'_locale': translation.locale, 'page_slug': translation.titleSlug}) }}">
+                        <a href="{{ path('show_page', {'culture': translation.locale, 'page_slug': translation.titleSlug}) }}">
                             {{ languages[translation.locale] | capitalize }}
                         </a>
                     </li>

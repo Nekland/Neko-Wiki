@@ -19,7 +19,7 @@ class PageParamConverterSpec extends ObjectBehavior
 
     public function let(PageProvider $pageProvider, Page $page)
     {
-        $pageProvider->findPageBySlug(Argument::any())->willReturn($page);
+        $pageProvider->findPageBySlugAndCulture(Argument::any(), Argument::any())->willReturn($page);
         $this->beConstructedWith($pageProvider);
     }
 
@@ -48,6 +48,7 @@ class PageParamConverterSpec extends ObjectBehavior
     {
         $request->attributes = $parameterBag;
         $parameterBag->get(Argument::any())->willReturn('home');
+        $parameterBag->get(Argument::any(), Argument::any())->willReturn('fr');
         $parameterBag->set('page', $page)->shouldBeCalled();
 
         $this->apply($request, $configuration)->shouldReturn(true);

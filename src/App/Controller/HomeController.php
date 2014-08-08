@@ -32,14 +32,7 @@ class HomeController extends Controller
 
         $page = $this->get('neko_wiki.provider.page')->getHomepage();
 
-        return $this->redirectToRoute('show_page', ['page_slug' => $page->getTitleSlug(), '_locale' => $language]);
-    }
-
-    public function homeAction()
-    {
-        $page_provider = $this->get('neko_wiki.provider.page');
-
-        return $this->render('NekoWiki:Page:basic.html.twig', ['page' => $page_provider->getHomepage()]);
+        return $this->redirectToRoute('show_page', ['page_slug' => $page->getTitleSlug(), 'culture' => $language]);
     }
 
     public function footerAction()

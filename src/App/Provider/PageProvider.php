@@ -27,7 +27,7 @@ class PageProvider
      */
     public function getHomepage()
     {
-        $page = $this->findPageBySlug('home');
+        $page = $this->findPageBySlugAndCulture('home');
 
         if ($page === null) {
             throw new NotFoundHttpException('The homepage is not findable. Please read the documentation of NekoWiki about installation.');
@@ -38,16 +38,25 @@ class PageProvider
 
     /**
      * @param string $slug
+     * @param string $culture
      * @return null|\App\Entity\Page
      */
-    public function findPageBySlug($slug)
+    public function findPageBySlugAndCulture($slug, $culture = null)
     {
-        $translation = $this->getTranslationRepository()->findOneBy(['titleSlug' => $slug]);
+        if (null === $culture) {
+            $translation = $this->getTranslationRepository()->findOneBy(['titleSlug' => $slug]);
+        } else {
+            $translation = $this->getTranslationRepository()->findOneBy(['titleSlug' => $slug, 'locale' => $culture]);
+        }
+
         if ($translation === null) {
             return null;
         }
 
-        return $translation->getTranslatable();
+        $page = $translation->getTranslatable();
+        $page->setCurrentLocale($culture);
+
+        return $page;
     }
 
     /**

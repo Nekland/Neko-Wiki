@@ -48,12 +48,13 @@ class PageController extends Controller
 
     /**
      * Modify an existing page
+     * TODO: why the fuck the page parameter would be null ?
      *
      * @param Request $request
      * @param Page $page
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function editAction(Request $request, Page $page)
+    public function editAction(Request $request, Page $page = null)
     {
         $form = $this->createForm('neko_wiki_page', $page);
         $form->handleRequest($request);

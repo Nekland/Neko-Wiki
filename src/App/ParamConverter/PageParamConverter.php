@@ -30,8 +30,9 @@ class PageParamConverter implements ParamConverterInterface
      */
     public function apply(Request $request, ParamConverter $configuration)
     {
-        $slug = $request->attributes->get('page_slug');
-        $page = $this->provider->findPageBySlug($slug);
+        $slug    = $request->attributes->get('page_slug');
+        $culture = $request->attributes->get('culture', null);
+        $page = $this->provider->findPageBySlugAndCulture($slug, $culture);
 
         $request->attributes->set('page', $page);
 

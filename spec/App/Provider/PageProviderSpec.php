@@ -19,22 +19,12 @@ class PageProviderSpec extends ObjectBehavior
         $this->shouldHaveType('App\Provider\PageProvider');
     }
 
-    public function let(
-        EntityManager $em,
-        EntityRepository $repo,
-        PageTranslation $translation,
-        Page $page,
-        RequestStack $requestStack,
-        Request $request
-    ) {
-        $requestStack->getCurrentRequest()->willReturn($request);
-        $request->getLocale()->willReturn('en');
-
+    function let(EntityManager $em, EntityRepository $repo, PageTranslation $translation, Page $page)
+    {
+        $this->beConstructedWith($em);
         $em->getRepository(Argument::any())->willReturn($repo);
         $repo->findOneBy(Argument::any())->willReturn($translation);
         $translation->getTranslatable()->willReturn($page);
-
-        $this->beConstructedWith($em, $requestStack);
     }
 
     public function its_getHomepage_that_should_return_page($page)

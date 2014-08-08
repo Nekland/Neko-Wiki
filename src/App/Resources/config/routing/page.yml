@@ -1,0 +1,15 @@
+show_page:
+    path: /{culture}/{page_slug}.html
+    defaults:
+        _controller:  'NekoWiki:Page:show'
+
+edit_page:
+    path: /edit/{page_slug}.html
+    defaults:
+        _controller: 'NekoWiki:Page:edit'
+
+
+#new_page:
+#    path: /article/creation
+#    defaults:
+#        _controller: 'NekoWiki:Page:new'
