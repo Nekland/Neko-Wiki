@@ -2,6 +2,10 @@
 
 namespace spec\App\Provider;
 
+use App\Entity\Page;
+use App\Entity\PageTranslation;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -12,16 +16,12 @@ class PageProviderSpec extends ObjectBehavior
         $this->shouldHaveType('App\Provider\PageProvider');
     }
 
-    /**
-     * @param \Doctrine\ORM\EntityManager    $em
-     * @param \Doctrine\ORM\EntityRepository $repo
-     * @param \App\Entity\Page               $page
-     */
-    function let($em, $repo, $page)
+    function let(EntityManager $em, EntityRepository $repo, PageTranslation $translation, Page $page)
     {
         $this->beConstructedWith($em);
         $em->getRepository(Argument::any())->willReturn($repo);
-        $repo->findOneBy(Argument::any())->willReturn($page);
+        $repo->findOneBy(Argument::any())->willReturn($translation);
+        $translation->getTranslatable()->willReturn($page);
     }
 
     function its_getHomepage_that_should_return_page($page)
