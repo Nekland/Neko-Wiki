@@ -37,6 +37,7 @@ app:
         menu:
             page: Page
             modify: Modify
+            other_translations: Other languages
         form:
             add_translation: Add a translation
             content: Content (%lang%)

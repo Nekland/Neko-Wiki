@@ -34,6 +34,18 @@ This page is editable as any other page !
 Markdown
             )
         ;
+        $page2
+            ->translate('fr')
+            ->setTitle('Aide')
+            ->setContent(
+<<<Markdown
+Bienvenue dans l'aide
+=====================
+
+Cette page est modifiable comme n'importe quelle page !
+Markdown
+            )
+        ;
 
         $manager->persist($page);
         $manager->persist($page2);
