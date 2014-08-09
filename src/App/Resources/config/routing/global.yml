@@ -4,13 +4,9 @@ neko_wiki_user:
 
 
 # no category routes
-homepage:
-    path: /
-    defaults:
-        _controller: 'NekoWiki:Home:home'
 
 search:
-    path: /search
+    path: /search.html
     defaults:
         _controller: 'NekoWiki:Search:searchRedirection'
     requirements:
@@ -25,11 +21,11 @@ search_results:
 
 
 edit_page:
-    path: /article/{page_slug}/modify
+    path: /article/{page_slug}/modify.html
     defaults:
         _controller: 'NekoWiki:Page:edit'
 
 show_page:
-    path: /article/{page_slug}
+    path: /article/{page_slug}.html
     defaults:
         _controller:  'NekoWiki:Page:show'
