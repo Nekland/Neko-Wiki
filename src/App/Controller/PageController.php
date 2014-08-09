@@ -8,6 +8,13 @@ use Symfony\Component\HttpFoundation\Request;
 
 class PageController extends Controller
 {
+    /**
+     * Shows a page
+     *
+     * @param Page $page
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
     public function showAction(Page $page = null)
     {
         if ($page === null) {
@@ -19,6 +26,13 @@ class PageController extends Controller
         ]);
     }
 
+    /**
+     * Modify an existing page
+     *
+     * @param Request $request
+     * @param Page $page
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function editAction(Request $request, Page $page = null)
     {
         $form = $this->createForm('neko_wiki_page', $page);
@@ -35,6 +49,20 @@ class PageController extends Controller
             'form'      => $form->createView(),
             'page'      => $page,
             'languages' => $this->get('neko_wiki.provider.language')->getLanguages()
+        ]);
+    }
+
+    /**
+     * Shows a piece of menu with link to translation page
+     *
+     * @param Page $page
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function showOtherLanguagesAction(Page $page)
+    {
+        return $this->render('NekoWiki:Page:_other_translations.html.twig', [
+            'translations' => $page->getTranslations(),
+            'languages'    => $this->get('neko_wiki.provider.language')->getLanguages()
         ]);
     }
 }
