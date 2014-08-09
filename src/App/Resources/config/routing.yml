@@ -1,4 +1,4 @@
-langage_redirection:
+homepage:
     path: /
     defaults:
         _controller: 'NekoWiki:Home:language'
