@@ -2,7 +2,6 @@
 
 namespace App\Provider;
 
-
 use App\Entity\Page;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -53,11 +52,15 @@ class PageProvider
 
     /**
      * @param string $title
+     * @param string $locale
+     *
      * @return null|\App\Entity\Page
      */
-    public function findPageByTitle($title)
+    public function findPageByTitle($title, $locale)
     {
-        $translation = $this->getTranslationRepository()->findOneBy(['title' => $title]);
+        $translation = $this->getTranslationRepository()->findOneBy(['title' => $title, 'locale' => $locale]);
+
+        // @TODO: ternary ?
         if ($translation === null) {
             return null;
         }
@@ -66,12 +69,14 @@ class PageProvider
     }
 
     /**
-     * @param $title
+     * @param string $title
+     * @param string $locale
+     *
      * @return null|\App\Entity\Page
      */
-    public function searchPage($title)
+    public function searchPage($title, $locale)
     {
-        return $this->findPageByTitle($title);
+        return $this->findPageByTitle($title, $locale);
     }
 
     public function createPage($title = null)

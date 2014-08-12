@@ -8,11 +8,11 @@ use Doctrine\ORM\EntityRepository;
 class PageRepository extends EntityRepository
 {
     /**
-     * @param  string $query
-     * @param  string $locale
+     * @param string $query
+     *
      * @return \Doctrine\ORM\QueryBuilder
      */
-    public function createSearchContentQb($query, $locale='en')
+    public function createSearchContentQb($query)
     {
         $qb = $this->createQueryBuilder('p');
 
@@ -20,9 +20,8 @@ class PageRepository extends EntityRepository
 
         $qb
             ->where($qb->expr()->like('pt.content', ':query'))
-            ->andWhere($qb->expr()->eq('pt.locale', ':locale'))
             ->setParameter('query', '%' . $query . '%')
-            ->setParameter('locale', $locale)
+            ->orderBy('pt.locale');
         ;
 
         return $qb;

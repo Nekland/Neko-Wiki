@@ -36,7 +36,7 @@ class SearchController extends Controller
             $data = $form->getData();
 
             $words = $data['search'];
-            $page = $this->get('neko_wiki.provider.page')->searchPage($words);
+            $page = $this->get('neko_wiki.provider.page')->searchPage($words, $request->getLocale());
 
             if ($page !== null) {
                 return $this->redirectToRoute('show_page', ['page_slug' => $page->getTitleSlug()]);
