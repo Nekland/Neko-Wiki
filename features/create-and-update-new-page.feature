@@ -6,11 +6,11 @@ Feature: Manage a wiki page
   Scenario: Write a new page
     Given I search the page foo search
      When I follow "Foo search"
-      And I should see "Creating the page \"Foo search\""
-     Then I fill in the following:
+      And I should see "Creation of the page \"Foo search\""
+     Then I fill in "Content (en)" with:
       """
         Hello, I'm foo bar !
         **Are you ready to see what happen ?**
       """
-      And I press "Edit"
+      And I press "Save"
       And I should see "Hello, i'm foo bar !"

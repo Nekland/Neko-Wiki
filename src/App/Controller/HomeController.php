@@ -27,7 +27,7 @@ class HomeController extends Controller
 
         $page = $this->get('neko_wiki.provider.page')->getHomepage();
 
-        return $this->redirectToRoute('show_page', ['page_slug' => $page->getTitleSlug()]);
+        return $this->redirectToRoute('show_page', ['page_slug' => $page->getTitleSlug(), '_locale' => $language]);
     }
     
     public function homeAction()
