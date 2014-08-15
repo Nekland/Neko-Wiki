@@ -9,6 +9,7 @@ App\Entity\User\User:
             - Email: ~
             - NotBlank: ~
         password:
+            - NotBlank: ~
             - Length: { min: 4 }
 
 App\Entity\PageTranslation:
