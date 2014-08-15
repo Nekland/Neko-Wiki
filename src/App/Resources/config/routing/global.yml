@@ -25,6 +25,11 @@ edit_page:
     defaults:
         _controller: 'NekoWiki:Page:edit'
 
+new_page:
+    path: /article/creation
+    defaults:
+        _controller: 'NekoWiki:Page:new'
+
 show_page:
     path: /article/{page_slug}.html
     defaults:

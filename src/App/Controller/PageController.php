@@ -26,6 +26,28 @@ class PageController extends Controller
         ]);
     }
 
+    public function newAction(Request $request)
+    {
+        $page = new Page();
+        $page->setTitle($request->query->get('title', null));
+        $page->mergeNewTranslations();
+        $form = $this->createForm('neko_wiki_page', $page);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $page->mergeNewTranslations();
+            $this->persistAndFlush($page);
+
+            return $this->redirectToRoute('show_page', ['page_slug' => $page->getTitleSlug()]);
+        }
+
+        return $this->render('NekoWiki:Page:new.html.twig', [
+            'form'      => $form->createView(),
+            'page'      => $page,
+            'languages' => $this->get('neko_wiki.provider.language')->getLanguages()
+        ]);
+    }
+
     /**
      * Modify an existing page
      *
@@ -33,7 +55,7 @@ class PageController extends Controller
      * @param Page $page
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function editAction(Request $request, Page $page = null)
+    public function editAction(Request $request, Page $page)
     {
         $form = $this->createForm('neko_wiki_page', $page);
         $form->handleRequest($request);

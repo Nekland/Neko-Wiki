@@ -10,3 +10,12 @@ App\Entity\User\User:
             - NotBlank: ~
         password:
             - Length: { min: 4 }
+
+App\Entity\PageTranslation:
+    properties:
+        title:
+            - NotBlank: ~
+            - Length: { min: 3 }
+        content:
+            - NotBlank: ~
+            - Length: { min: 100 }

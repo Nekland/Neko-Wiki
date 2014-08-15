@@ -6,7 +6,7 @@ Feature: Manage a wiki page
   Scenario: Write a new page
     Given I search the page foo search
      When I follow "Foo search"
-      And I should see "Modification de Foo search"
+      And I should see "Creating the page \"Foo search\""
      Then I fill in the following:
       """
         Hello, I'm foo bar !

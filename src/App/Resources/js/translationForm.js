@@ -22,11 +22,14 @@ $(document).ready(function() {
                 .replace(/\%lang\%/g, language)
         );
 
+        console.log($newTmp[0].outerHTML);
         $new
             .find('.form-group:first')
             .append($newTmp.find('label').eq(1).detach())
             .append($newTmp.find('input[type=text]').detach().addClass('form-control'))
         ;
+
+
         $new
             .find('.form-group').eq(1)
             .append($newTmp.find('label').eq(1).detach())
