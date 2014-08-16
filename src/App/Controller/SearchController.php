@@ -45,7 +45,7 @@ class SearchController extends Controller
             return $this->redirectToRoute('search_results', ['q' => $words]);
         }
 
-        return $this->redirectToRoute('homepage');
+        return $this->redirectToRoute('homepage_by_lang', ['_locale' => $this->getCurrentLocale()]);
     }
 
     /**

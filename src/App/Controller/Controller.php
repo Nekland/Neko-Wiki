@@ -71,19 +71,6 @@ class Controller extends BaseController
         return $this->getDoctrine()->getManager();
     }
 
-
-//    /**
-//     * @param  string     $message
-//     * @param  \Exception $previous
-//     * @return WikiNotFoundHttpException|\Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-//     */
-//    public function createNotFoundException($message = 'Not Found', \Exception $previous = null)
-//    {
-//        $form = $this->getForm();
-//
-//        return new WikiNotFoundHttpException($form->createView(), $message, $previous);
-//    }
-
     /**
      * @return \Symfony\Component\Form\Form
      */
@@ -93,5 +80,13 @@ class Controller extends BaseController
             'action' => $this->generateUrl('search'),
             'method' => 'POST'
         ]);
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrentLocale()
+    {
+        return $this->getSession()->get('_locale');
     }
 }
