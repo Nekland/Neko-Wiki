@@ -14,3 +14,15 @@ Feature: Manage a wiki page
       """
       And I press "Save"
       And I should see "Hello, i'm foo bar !"
+
+  Scenario: Update a page
+    Given I am on "/en/article/home.html"
+     When I follow "Page"
+      And I follow "Modify"
+     Then I should see "Modification of the page \"Home\""
+    Then I fill in "Content (en)" with:
+      """
+        I'm the new homepage :) .
+      """
+    And I press "Save"
+    And I should see "I'm the new homepage :) ."

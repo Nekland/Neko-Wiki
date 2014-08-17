@@ -45,4 +45,4 @@ app:
             submit: Enregistrer
         crud:
             creating: Creation de la page « %pagename% »
-            updating: Modifitation of the page « %pagename% »
+            updating: Modification de la page « %pagename% »

@@ -45,4 +45,4 @@ app:
             submit: Save
         crud:
             creating: Creation of the page "%pagename%"
-            updating: Modifitation of the page "%pagename%"
+            updating: Modification of the page "%pagename%"
