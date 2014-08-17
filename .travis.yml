@@ -1,5 +1,9 @@
 language: php
 
+branches:
+    only:
+        - master
+
 php:
   - 5.4
   - 5.5
@@ -10,8 +14,8 @@ before_script:
 
     # This part is for making selenium work
     # Notice that you can also use PhantomJS
-    - sh -e /etc/init.d/xvfb start && export DISPLAY=:99 && wget http://selenium.googlecode.com/files/selenium-server-standalone-2.37.0.jar
-    - java -jar selenium-server-standalone-2.37.0.jar > /dev/null &
+    - sh -e /etc/init.d/xvfb start && export DISPLAY=:99 && wget http://selenium-release.storage.googleapis.com/2.42/selenium-server-standalone-2.42.2.jar
+    - java -jar selenium-server-standalone-2.42.2.jar > /dev/null &
     - sleep 5
 
     - php app/console ser:run &
