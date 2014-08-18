@@ -18,4 +18,4 @@ services:
 
     neko_wiki.provider.page:
         class: %neko_wiki.provider.page.class%
-        arguments: [ @doctrine.orm.default_entity_manager ]
+        arguments: [ @doctrine.orm.default_entity_manager, @request_stack ]

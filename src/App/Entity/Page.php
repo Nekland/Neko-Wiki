@@ -16,6 +16,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 class Page
 {
     use ORMBehaviors\Translatable\Translatable;
+
     /**
      * @var integer
      *

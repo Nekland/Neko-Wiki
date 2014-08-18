@@ -28,9 +28,7 @@ class PageController extends Controller
 
     public function newAction(Request $request)
     {
-        $page = new Page();
-        $page->setTitle($request->query->get('title', null));
-        $page->mergeNewTranslations();
+        $page = $this->get('neko_wiki.provider.page')->createPage($request->query->get('title', null));
         $form = $this->createForm('neko_wiki_page', $page);
         $form->handleRequest($request);
 

@@ -3,7 +3,9 @@
 namespace App\Provider;
 
 
+use App\Entity\Page;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PageProvider
@@ -12,12 +14,12 @@ class PageProvider
 
     /**
      * @param EntityManager $em
-     * @param string        $defaultLanguage
+     * @param RequestStack  $requestStack
      */
-    public function __construct(EntityManager $em, $defaultLanguage = 'en')
+    public function __construct(EntityManager $em, RequestStack $requestStack)
     {
         $this->em              = $em;
-        $this->defaultLanguage = $defaultLanguage;
+        $this->defaultLanguage = $requestStack->getCurrentRequest()->getLocale();
     }
 
     /**
@@ -70,6 +72,16 @@ class PageProvider
     public function searchPage($title)
     {
         return $this->findPageByTitle($title);
+    }
+
+    public function createPage($title = null)
+    {
+        $page = new Page();
+        $page->setCurrentLocale($this->defaultLanguage);
+        $page->setTitle($title);
+        $page->mergeNewTranslations();
+
+        return $page;
     }
 
     /**
