@@ -3,6 +3,11 @@ homepage:
     defaults:
         _controller: 'NekoWiki:Home:language'
 
+homepage_by_lang:
+    path: /{_locale}/
+    defaults:
+        _controller: 'NekoWiki:Home:language'
+
 neko_wiki_main:
     prefix: /{_locale}
     resource: 'routing/global.yml'

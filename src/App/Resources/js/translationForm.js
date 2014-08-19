@@ -27,6 +27,7 @@ $(document).ready(function() {
             .append($newTmp.find('label').eq(1).detach())
             .append($newTmp.find('input[type=text]').detach().addClass('form-control'))
         ;
+
         $new
             .find('.form-group').eq(1)
             .append($newTmp.find('label').eq(1).detach())

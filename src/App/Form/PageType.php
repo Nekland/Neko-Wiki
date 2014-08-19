@@ -13,12 +13,12 @@ class PageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('translations', 'collection', [
-            'type'      => new PageTranslationType(),
-            'allow_add' => false,
-            'label'     => false
+            'type'       => 'neko_wiki_page_translation',
+            'allow_add'  => false,
+            'label'      => false
         ]);
         $builder->add('newTranslations', 'collection', [
-            'type'      => new PageTranslationType(),
+            'type'      => 'neko_wiki_page_translation',
             'allow_add' => true,
             'label'     => false
         ]);

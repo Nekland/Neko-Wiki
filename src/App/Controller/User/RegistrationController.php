@@ -44,7 +44,7 @@ class RegistrationController extends Controller
 
             $this->setFlash('success', 'app.user.registration.success');
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('homepage_by_lang', ['_locale' => $this->getCurrentLocale()]);
         }
 
         $this->setFlash('error', 'app.user.registration.error');

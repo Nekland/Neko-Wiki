@@ -1,0 +1,6 @@
+{% extends 'NekoWiki::layout.html.twig' %}
+
+{% block body %}
+    <h1>{% trans with {'%pagename%': page.title} %}app.page.crud.creating{% endtrans %}</h1>
+    {{ include('NekoWiki:Page:_page_form.html.twig', {'form': form}) }}
+{% endblock %}

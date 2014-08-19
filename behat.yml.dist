@@ -22,7 +22,7 @@ default:
 
             # Usefull when you use the "And show last response" command
             # You can change it to `firefox %s` or maybe `google_chrome %s`
-            show_cmd: chrome %s
+            show_cmd: firefox %s
 
         Knp\FriendlyContexts\Extension:
             smartTag: smartStep

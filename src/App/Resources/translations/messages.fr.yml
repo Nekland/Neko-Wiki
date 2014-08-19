@@ -43,3 +43,6 @@ app:
             content: Contenu (%lang%)
             title: Titre (%lang%)
             submit: Enregistrer
+        crud:
+            creating: Creation de la page « %pagename% »
+            updating: Modification de la page « %pagename% »

@@ -14,7 +14,9 @@
             <p>
                 <i>{% trans %}app.search.does_not_exists{% endtrans %}</i>
                 <i>
-{{ 'app.search.create_the_page_p1'|trans }}<a href="#" class="non-existant">{{ query|capitalize }}</a>{{ 'app.search.create_the_page_p2'|trans }}
+                    {{- 'app.search.create_the_page_p1'|trans -}}
+                    <a href="{{ path('new_page', {'title': query|capitalize}) }}" class="non-existant">{{ query|capitalize }}</a>
+                    {{- 'app.search.create_the_page_p2'|trans -}}
                 </i>
             </p>
 

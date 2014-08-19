@@ -3,6 +3,7 @@ parameters:
     neko_wiki.form.registration.class:           App\Form\RegistrationType
     neko_wiki.form.page.class:                   App\Form\PageType
     neko_wiki.form.basic.text_translation.class: App\Form\Basic\TextTranslatableType
+    neko_wiki.form.page_translation.class:       App\Form\PageTranslationType
 
 services:
     neko_wiki.form.registration:
@@ -24,3 +25,13 @@ services:
         class: %neko_wiki.form.basic.text_translation.class%
         tags:
             - { name: form.type, alias: text_translatable }
+
+    neko_wiki.form.page_translation:
+        class: %neko_wiki.form.page_translation.class%
+        tags:
+            - { name: form.type, alias: neko_wiki_page_translation }
+
+    neko_wiki.form.basic.page_translation_collection:
+        class: App\Form\Basic\PageTranslationCollectionType
+        tags:
+            - { name: form.type, alias: neko_wiki_page_translation_collection }

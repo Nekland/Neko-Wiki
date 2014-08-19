@@ -4,8 +4,9 @@ Feature: Registration and login of a user
   I should be able to register and login
   And update my preferences
 
+  @javascript
   Scenario: Be able to register
-    Given I am on the homepage
+    Given I am on "/en/article/home.html"
      Then I follow "Member"
       And I follow "Register"
      When I fill in "Username" with "Nek"
@@ -16,7 +17,7 @@ Feature: Registration and login of a user
      Then I should see "Thank you for register :)"
 
   Scenario: Be able to login
-    Given I am on the homepage
+    Given I am on "/en/article/home.html"
      Then I follow "Member"
       And I follow "Login"
      When I fill in "Username" with "admin"

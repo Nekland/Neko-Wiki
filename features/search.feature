@@ -6,7 +6,7 @@ Feature: Search
 
   @smartStep
   Scenario: I search the page foo search
-    Given I am on the homepage
+    Given I am on "/en/article/home.html"
      When I fill in "Search" with "foo search"
       And I press "submit_search"
      Then I should see "You can create the page \"Foo search\" right now."

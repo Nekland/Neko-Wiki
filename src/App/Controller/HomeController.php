@@ -16,18 +16,23 @@ class HomeController extends Controller
     /**
      * Real homepage redirecting to right home
      *
-     * @param Request $request
+     * @param Request     $request
+     * @param string|null $_locale
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function languageAction(Request $request)
+    public function languageAction(Request $request, $_locale = null)
     {
-        $language = explode('_', $request->getPreferredLanguage())[0];
-        $this->getSession()->set('_locale', $language);
-        $request->setLocale($language);
+        if ($_locale === null) {
+            $language = explode('_', $request->getPreferredLanguage())[0];
+            $this->getSession()->set('_locale', $language);
+            $request->setLocale($language);
+        } else {
+            $language = $_locale;
+        }
 
         $page = $this->get('neko_wiki.provider.page')->getHomepage();
 
-        return $this->redirectToRoute('show_page', ['page_slug' => $page->getTitleSlug()]);
+        return $this->redirectToRoute('show_page', ['page_slug' => $page->getTitleSlug(), '_locale' => $language]);
     }
     
     public function homeAction()

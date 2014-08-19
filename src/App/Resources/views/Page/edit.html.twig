@@ -1,52 +1,6 @@
 {% extends 'NekoWiki::page_layout.html.twig' %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-md-12">
-            <div class="pull-right">
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                        {% trans %}app.page.form.add_translation{% endtrans %}
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" id="languages-form-list" role="language" aria-labelledby="Languages selection">
-                        {% for abbr, language in languages %}
-                            {% if app.request.locale != abbr %}
-                                <li><a href="#" data-lang="{{ abbr }}">{{ language|capitalize }}</a></li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        {{ form_start(form, {'attr': {'id': 'page-translation-form'}}) }}
-        <div class="col-md-12">
-            {% for translation in form.translations %}
-                {% if translation.locale.vars.value == app.request.locale %}
-                    <div class="row">
-                        <div class="col-md-12 main-translation-form">
-                            {{ include(
-                                'NekoWiki:Page:_translation_form.html.twig',
-                                { 'hidden': false, 'translation': translation }
-                            ) }}
-                        </div>
-                    </div>
-                {% else %}
-                    {{ include(
-                        'NekoWiki:Page:_translation_form.html.twig',
-                        { 'hidden': true, 'translation': translation }
-                    ) }}
-                {% endif %}
-                {{ include(
-                    'NekoWiki:Page:_translation_form.html.twig',
-                    { 'template': 'yes', 'hidden': false }
-                ) }}
-            {% endfor %}
-
-            <button type="submit" class="btn btn-primary">{% trans %}app.page.form.submit{% endtrans %}</button>
-        </div>
-        {{ form_end(form) }}
-    </div>
+    <h1>{% trans with {'%pagename%': page.title} %}app.page.crud.updating{% endtrans %}</h1>
+    {{ include('NekoWiki:Page:_page_form.html.twig', {'form': form}) }}
 {% endblock %}
