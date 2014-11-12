@@ -14,6 +14,8 @@ class PageTranslation
 {
     use ORMBehaviors\Translatable\Translation;
 
+    private $id;
+
     /**
      * @var string
      *

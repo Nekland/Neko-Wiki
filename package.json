@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "private": true,
     "dependencies": {
-        "less":           "*",
+        "less":           "1.7.*",
         "bower":          "*",
         "uglify-js":      "*",
         "uglifycss":      "*"
