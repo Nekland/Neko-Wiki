@@ -14,6 +14,9 @@ class PageTranslation
 {
     use ORMBehaviors\Translatable\Translation;
 
+    /**
+     * @var integer
+     */
     private $id;
 
     /**
@@ -37,6 +40,14 @@ class PageTranslation
      * @ORM\Column(name="title_slug", unique=true)
      */
     private $titleSlug;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * @param  string $content
