@@ -60,7 +60,6 @@ class PageProvider
     {
         $translation = $this->getTranslationRepository()->findOneBy(['title' => $title, 'locale' => $locale]);
 
-        // @TODO: ternary ?
         if ($translation === null) {
             return null;
         }
