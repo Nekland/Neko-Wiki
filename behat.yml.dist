@@ -6,7 +6,6 @@ default:
             path: %paths.base%/features
             contexts:
                 - Context\FeatureContext
-                - Behat\MinkExtension\Context\MinkContext
                 - Context\FixtureContext
     extensions:
         Behat\MinkExtension\ServiceContainer\MinkExtension:

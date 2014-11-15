@@ -12,6 +12,11 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  *
  * @ORM\Table(name="page")
  * @ORM\Entity(repositoryClass="App\Entity\PageRepository")
+ *
+ * Some methods are from PageTranslation
+ * @method Page setTitle
+ * @method Page setContent
+ * @method Page translate
  */
 class Page
 {
@@ -56,7 +61,7 @@ class Page
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
