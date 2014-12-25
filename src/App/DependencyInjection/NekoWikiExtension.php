@@ -31,7 +31,7 @@ class NekoWikiExtension extends Extension
 
         $this->setupParameterProvider($container, $config);
 
-        $definition = $container->getDefinition('neko_wiki.provider.language');
+        $definition = $container->getDefinition('neko_wiki.language.manager');
         $definition->addArgument($config['general_parameters']['languages']);
     }
 

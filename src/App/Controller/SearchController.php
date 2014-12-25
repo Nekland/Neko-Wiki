@@ -64,9 +64,11 @@ class SearchController extends Controller
         }
 
         $searcher = $this->get('neko_wiki.searcher');
+        $language = $this->get('neko_wiki.language.manager')->getCurrentLanguage();
 
         return $this->render('NekoWiki:Search:results.html.twig', [
-            'pager' => $searcher->find($query),
+            'mainPager' => $searcher->findForLang($query, $language),
+            'otherLangPager' => $searcher->findForAllLanguageExcept($query, $language),
             'query' => $query
         ]);
     }

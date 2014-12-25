@@ -28,7 +28,7 @@ Feature: Search
 
   Scenario: the page does not exists but there are related results on search
     Given I am on "/"
-     When I fill "search" with "Something"
+     When I fill "Search" with "Something"
       And I press search
      Then I should see the search page
       And I should see a list of related results

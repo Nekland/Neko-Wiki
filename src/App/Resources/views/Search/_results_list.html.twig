@@ -1,0 +1,13 @@
+
+<div class="search-result">
+    <p class="heading">
+        <a href="{{ path('show_page', {'page_slug': page.titleSlug}) }}">
+            {{ page.title }}
+        </a>
+        {% if language is defined %}
+            ({{ language }})
+        {% endif %}
+    </p>
+    <p class="description">{{ page.content|truncate(200) }}</p>
+    <p class="more">{% trans %}app.search.last_update{% endtrans %} {{ page.updatedAt | format_datetime }}</p>
+</div>

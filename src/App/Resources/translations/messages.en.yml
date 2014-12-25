@@ -28,6 +28,7 @@ app:
         relevant:           Pages relevant with your search.
         nothing_relevant:   Sorry, absolutely nothing was found for your search :-( .
         last_update:        Last update:
+        in_other_languages: Search in other languages
 
     errors:
         not_found: The page you're looking for doesn't exists.

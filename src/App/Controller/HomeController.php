@@ -34,7 +34,7 @@ class HomeController extends Controller
 
         return $this->redirectToRoute('show_page', ['page_slug' => $page->getTitleSlug(), '_locale' => $language]);
     }
-    
+
     public function homeAction()
     {
         $page_provider = $this->get('neko_wiki.provider.page');
@@ -50,7 +50,7 @@ class HomeController extends Controller
     public function languagePartialAction()
     {
         return $this->render('NekoWiki:Home:_languages.html.twig', [
-            'languages' => $this->get('neko_wiki.provider.language')->getLanguages()
+            'languages' => $this->get('neko_wiki.language.manager')->getLanguages()
         ]);
     }
 }
