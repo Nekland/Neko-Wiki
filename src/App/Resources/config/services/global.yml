@@ -1,7 +1,7 @@
 parameters:
     neko_wiki.provider.wiki_parameter.class: App\Provider\WikiParameterProvider
     neko_wiki.event.subscriber.locale.class: App\Event\Subscribers\LocaleListener
-    neko_wiki.provider.languages.class:      App\Language\LanguageManager
+    neko_wiki.provider.languages.class: App\Language\LanguageManager
 
 services:
 

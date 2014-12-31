@@ -47,7 +47,7 @@ class RepositorySearch implements SearcherInterface
     public function findForAllLanguageExcept($query, $language)
     {
         $query = $this->repository->createSearchContentQbExeptLanguage($query, $language);
-        var_dump($query->getResult()[0]->getTitleSlug());exit;
+        var_dump($query->getResult()[0]->getCurrentLocale());exit;
 
         $adapter = new DoctrineORMNativeQueryAdapter($this->repository->createSearchContentQbExeptLanguage($query, $language));
 
