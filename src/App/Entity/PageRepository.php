@@ -18,6 +18,7 @@ class PageRepository extends EntityRepository
         $rsm = new ResultSetMappingBuilder($this->_em);
         $rsm->addRootEntityFromClassMetadata('App\Entity\Page', 'p');
         $rsm->addJoinedEntityFromClassMetadata('App\Entity\PageTranslation', 'pt', 'p', 'translations', ['id' => 'translatable_id']);
+        $rsm->addIndexBy('pt', 'locale');
 
 
         $sql = 'SELECT ' . $rsm->generateSelectClause(['p' => 'p', 'pt' => 'pt']) . ' FROM page p ' .
@@ -41,7 +42,7 @@ class PageRepository extends EntityRepository
                 1 => '%' . $query . '%',
                 2 => '%' . $query . '%',
                 3 => $query . ' %',
-                4 => '% ' .$query . ' %',
+                4 => '% ' . $query . ' %',
                 5 => $query . '%'
             ])
         ;
@@ -132,7 +133,7 @@ class PageRepository extends EntityRepository
      * @param string $language
      * @return \Doctrine\ORM\QueryBuilder
      */
-    public function createSearchContentQbExeptLanguage($query, $language)
+    public function createSearchContentQbExceptLanguage($query, $language)
     {
         /*
         $qb = $this->createSearchContentQb($query);

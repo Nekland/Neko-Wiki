@@ -23,20 +23,19 @@ Feature: Search
     Given I am on "/en/article/home.html"
      When I fill in "Search" with "Foo Bar"
       And I press "submit_search"
-     Then I should see "Results for your search"
-      And I should see "The page exists in another language"
+     Then I should see "The page exist in another language"
+      And I should see "Foo Bar (fr)"
 
   Scenario: the page does not exists but there are related results on search
-    Given I am on "/"
-     When I fill "Search" with "Something"
-      And I press search
-     Then I should see the search page
-      And I should see a list of related results
+    Given I am on "/en/article/home.html"
+     When I fill in "Search" with "Something"
+      And I press "submit_search"
+     Then I should see "Results for your search"
+      And I should see "Something in english"
 
   Scenario: the page does not exists and there is no results in my languages
-    Given I am on "/"
-    When I fill "search" with "Foo"
-    And I press search
-    Then I should see the search page
-    And I should see "There is no results for your current language but there are results in other languages"
-    And I should see a list of revelant results sorted by language
+    Given I am on "/en/article/home.html"
+     When I fill in "Search" with "Foo"
+      And I press "submit_search"
+     Then I should see "Sorry, absolutely nothing was found for your search :-( ."
+      And I should see "Foo Bar (fr)"

@@ -22,7 +22,10 @@
 
             <h3>{% trans %}app.search.relevant{% endtrans %}</h3>
             {% for page in mainPager %}
-                {{ include('NekoWiki:Search:_results_list.html.twig', {'page': page}) }}
+                {{ include(
+                    'NekoWiki:Search:_results_list.html.twig',
+                    {'page_slug': page.titleSlug, 'content': page.content, 'updatedAt': page.updatedAt, 'title': page.title}
+                ) }}
             {% else %}
                 <p class="nothing-found">{% trans %}app.search.nothing_relevant{% endtrans %}</p>
             {% endfor %}
@@ -44,7 +47,16 @@
             {% if otherLangPager.count() > 0 %}
                 <h3>{% trans %}app.search.in_other_languages{% endtrans %}</h3>
                 {% for page in otherLangPager %}
-                    {{ include('NekoWiki:Search:_results_list.html.twig', {'page': page, 'language': page.locale }) }}
+                    {{ include(
+                        'NekoWiki:Search:_results_list.html.twig',
+                        {
+                            'page_slug': page.preferredTranslation.titleSlug,
+                            'content': page.preferredTranslation.content,
+                            'updatedAt': page.preferredTranslation.updatedAt,
+                            'title': page.preferredTranslation.title,
+                            'language': page.preferredLocale
+                        }
+                    ) }}
                 {% endfor %}
             {% endif %}
         </div>

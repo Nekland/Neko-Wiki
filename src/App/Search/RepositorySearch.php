@@ -6,7 +6,7 @@ namespace App\Search;
 use App\Entity\PageRepository;
 use App\Language\LanguageManager;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
-use Pagerfanta\Adapter\DoctrineORMNativeQueryAdapter;
+use App\Tools\Doctrine\DoctrineORMNativeQueryAdapter;
 use Pagerfanta\Pagerfanta;
 
 /**
@@ -46,10 +46,9 @@ class RepositorySearch implements SearcherInterface
 
     public function findForAllLanguageExcept($query, $language)
     {
-        $query = $this->repository->createSearchContentQbExeptLanguage($query, $language);
-        var_dump($query->getResult()[0]->getCurrentLocale());exit;
+        $query = $this->repository->createSearchContentQbExceptLanguage($query, $language);
 
-        $adapter = new DoctrineORMNativeQueryAdapter($this->repository->createSearchContentQbExeptLanguage($query, $language));
+        $adapter = new DoctrineORMNativeQueryAdapter($query);
 
         return new Pagerfanta($adapter);
     }
