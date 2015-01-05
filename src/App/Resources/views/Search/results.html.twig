@@ -9,10 +9,32 @@
         </div>
     </div>
 
+    {% if potentialMatchPage is not empty %}
+        <div class="row page-lang-list">
+            <div class="col-md-12">
+                <p class="lead">{% trans %}app.search.available_in_other_languages{% endtrans %}</p>
+            </div>
+        </div>
+        <div class="row page-lang-list">
+            <div class="col-md-12">
+                {% for translation in potentialMatchPage.translations %}
+                <div class="well item-page-lang-list">
+                    <a href="{{ path('show_page', {'page_slug': translation.titleSlug}) }}">
+                        <img src="{{ asset('bundles/nekowiki/images/flags/64/' ~ language_manager.getFlagImage(translation.locale)) }}" /><br />
+                        {{ translation.title }} ({{ translation.locale }})
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
     <div class="row">
         <div class="col-md-12">
             <p>
-                <i>{% trans %}app.search.does_not_exists{% endtrans %}</i>
+                {% if potentialMatchPage is empty %}
+                    <i>{% trans %}app.search.does_not_exists{% endtrans %}</i>
+                {% endif %}
                 <i>
                     {{- 'app.search.create_the_page_p1'|trans -}}
                     <a href="{{ path('new_page', {'title': query|capitalize}) }}" class="non-existant">{{ query|capitalize }}</a>

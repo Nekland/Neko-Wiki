@@ -56,9 +56,15 @@ class PageProvider
      *
      * @return null|\App\Entity\Page
      */
-    public function findPageByTitle($title, $locale)
+    public function findPageByTitle($title, $locale = null)
     {
-        $translation = $this->getTranslationRepository()->findOneBy(['title' => $title, 'locale' => $locale]);
+        $criteria = ['title' => $title];
+
+        if (is_string($locale)) {
+            $criteria['locale'] = $locale;
+        }
+
+        $translation = $this->getTranslationRepository()->findOneBy($criteria);
 
         if ($translation === null) {
             return null;

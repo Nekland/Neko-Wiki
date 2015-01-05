@@ -63,13 +63,16 @@ class SearchController extends Controller
             throw $this->createNotFoundException('No query for search.');
         }
 
+        $page = $this->get('neko_wiki.provider.page')->findPageByTitle($query);
+
         $searcher = $this->get('neko_wiki.searcher');
         $language = $this->get('neko_wiki.language.manager')->getCurrentLanguage();
 
         return $this->render('NekoWiki:Search:results.html.twig', [
             'mainPager' => $searcher->findForLang($query, $language),
             'otherLangPager' => $searcher->findForAllLanguageExcept($query, $language),
-            'query' => $query
+            'query' => $query,
+            'potentialMatchPage' => $page
         ]);
     }
 

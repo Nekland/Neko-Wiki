@@ -23,7 +23,7 @@ Feature: Search
     Given I am on "/en/article/home.html"
      When I fill in "Search" with "Foo Bar"
       And I press "submit_search"
-     Then I should see "The page exist in another language"
+     Then I should see "This page exists in other languages."
       And I should see "Foo Bar (fr)"
 
   Scenario: the page does not exists but there are related results on search

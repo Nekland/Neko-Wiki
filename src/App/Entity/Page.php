@@ -18,6 +18,10 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  * @method Page setTitle
  * @method Page setContent
  * @method Page translate
+ * @method Page setTitleSlug
+ * @method string getTitleSlug
+ * @method string getContent
+ * @method string getTitle
  */
 class Page
 {

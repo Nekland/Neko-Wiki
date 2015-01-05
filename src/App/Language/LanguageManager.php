@@ -12,6 +12,10 @@ class LanguageManager
         'en' => 'english'
     ];
 
+    static protected $flag = [
+        'en' => 'us'
+    ];
+
     /**
      * @var array
      */
@@ -48,6 +52,15 @@ class LanguageManager
         }
 
         return $res;
+    }
+
+    public function getFlagImage($language)
+    {
+        if (isset(self::$flag[$language])) {
+            $language = self::$flag[$language];
+        }
+
+        return $language . '.png';
     }
 
     /*
