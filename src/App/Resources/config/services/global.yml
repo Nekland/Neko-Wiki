@@ -16,9 +16,3 @@ services:
         class: Twig_Extensions_Extension_Text
         tags:
             - { name: twig.extension }
-
-#    neko_wiki.event.subscriber.locale:
-#        class: %neko_wiki.event.subscriber.locale.class%
-#        arguments: ["%kernel.default_locale%"]
-#        tags:
-#            - { name: kernel.event_subscriber }

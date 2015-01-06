@@ -54,6 +54,10 @@ class LanguageManager
         return $res;
     }
 
+    /**
+     * @param string $language
+     * @return string
+     */
     public function getFlagImage($language)
     {
         if (isset(self::$flag[$language])) {
@@ -62,21 +66,6 @@ class LanguageManager
 
         return $language . '.png';
     }
-
-    /*
-    public function init()
-    {
-        $request = $this->requestStack->getMasterRequest();
-
-        // try to see if the locale has been set as a _locale routing parameter
-        if ($locale = $request->attributes->get('_locale')) {
-            $request->getSession()->set('_locale', $request->getPreferredLanguage());
-        } else {
-            // if no explicit locale has been set on this request, use one from the session
-            $request->setLocale($request->getSession()->get('_locale', $this->defaultLanguage));
-        }
-    }
-    */
 
     /**
      * @return string
