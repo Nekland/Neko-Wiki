@@ -48,60 +48,6 @@ class PageRepository extends EntityRepository
         ;
 
         return $nq;
-
-
-        /*
-        $sql = 'SELECT p.*, pt.* FROM page p ' .
-            'INNER JOIN page_translation pt ON pt.translatable_id = p.id ' .
-            'WHERE pt.title LIKE ? '
-        ;
-
-        if ($addSql !== null) {
-            $sql .= $addSql;
-        }
-
-        $sql .= ' UNION SELECT p.*, pt.* FROM page p ' .
-            'INNER JOIN page_translation pt ON pt.translatable_id = p.id ' .
-            'WHERE pt.title NOT LIKE ? AND pt.content LIKE ? '
-        ;
-        if ($addSql !== null) {
-            $sql .= $addSql;
-        }
-
-
-        $rsm = new ResultSetMappingBuilder($this->_em);
-        $rsm->addRootEntityFromClassMetadata('App\Entity\Page', 'p');
-        $rsm->addJoinedEntityFromClassMetadata('App\Entity\PageTranslation', 'pt', 'p', 'translations', ['id' => 'translatable_id']);
-
-        $nq = $this->_em->createNativeQuery($sql, $rsm);
-        $nq->setParameter(1, $query);
-        $nq->setParameter(2, $query);
-        $nq->setParameter(3, $query);
-
-        $qb = $this->createQueryBuilder('p');
-
-        $qb->innerJoin('p.translations', 'pt');
-
-        $qb
-            ->where($qb->expr()->like('pt.content', ':query'))
-            ->where($qb->expr()->like('pt.title', ':query'))
-        ;
-
-
-        $qb
-            ->orderBy('CASE WHEN pt.title LIKE :query_left_spaced THEN 0 WHEN pt.title LIKE :query_left THEN 1 WHEN pt.title LIKE :query_spaced THEN 2 ELSE 3', 'END')
-            ->addOrderBy('pt.locale');
-        ;
-
-        $qb
-            ->setParameter('query', '%' . $query . '%')
-            ->setParameter('query_left_spaced', $query . ' %')
-            ->setParameter('query_spaced', '% ' .$query . ' %')
-            ->setParameter('query_left', $query . '%')
-        ;
-
-        return $qb;
-        */
     }
 
     /**
@@ -135,16 +81,6 @@ class PageRepository extends EntityRepository
      */
     public function createSearchContentQbExceptLanguage($query, $language)
     {
-        /*
-        $qb = $this->createSearchContentQb($query);
-
-        $qb
-            ->andWhere($qb->expr()->neq('pt.locale', ':language'))
-            ->setParameter('language', $language)
-        ;
-
-        return $qb;
-*/
         return $this->createSearchContentQb($query, [' AND pt.locale <> \'' . $language . '\'']);
     }
 
