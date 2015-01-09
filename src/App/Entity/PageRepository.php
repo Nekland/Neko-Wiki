@@ -10,6 +10,7 @@ class PageRepository extends EntityRepository
 {
     /**
      * @param string $query
+     * @param array  $whereStatements
      *
      * @return \Doctrine\ORM\QueryBuilder
      */
@@ -59,16 +60,6 @@ class PageRepository extends EntityRepository
      */
     public function createSearchContentQbForLanguage($query, $language)
     {
-        /*
-        $qb = $this->createSearchContentQb($query);
-
-        $qb
-            ->andWhere($qb->expr()->eq('pt.locale', ':language'))
-            ->setParameter('language', $language)
-        ;
-
-        return $qb;
-*/
         return $this->createSearchContentQb($query, [ ' AND pt.locale = \'' . $language . '\'']);
     }
 
