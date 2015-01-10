@@ -87,6 +87,6 @@ class Controller extends BaseController
      */
     public function getCurrentLocale()
     {
-        return $this->getSession()->get('_locale');
+        return $this->get('neko_wiki.language.manager')->getCurrentLanguage();
     }
 }

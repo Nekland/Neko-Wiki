@@ -12,6 +12,16 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  *
  * @ORM\Table(name="page")
  * @ORM\Entity(repositoryClass="App\Entity\PageRepository")
+ * @ORM\HasLifecycleCallbacks()
+ *
+ * Some methods are from PageTranslation
+ * @method Page setTitle()
+ * @method Page setContent()
+ * @method Page translate()
+ * @method Page setTitleSlug()
+ * @method string getTitleSlug()
+ * @method string getContent()
+ * @method string getTitle()
  */
 class Page
 {
@@ -25,21 +35,6 @@ class Page
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    /**
-     * @var \DateTime
-     *
-     * @Gedmo\Timestampable(on="create")
-     * @ORM\Column(name="created_at", type="datetime")
-     */
-    private $createdAt;
-
-    /**
-     * @var \DateTime
-     *
-     * @Gedmo\Timestampable(on="update")
-     * @ORM\Column(name="updated_at", type="datetime")
-     */
-    private $updatedAt;
 
     /**
      * @var Tag[]
@@ -47,6 +42,13 @@ class Page
      * @ORM\ManyToMany(targetEntity="Tag")
      */
     private $tags;
+
+    /**
+     * TODO: as soon as doctrine 2.5 is out (and this PR merged https://github.com/doctrine/doctrine2/pull/1001)
+     *       the postLoad event should be use to fill this field.
+     * @var string
+     */
+    private $preferredLocale;
 
     public function __construct()
     {
@@ -56,49 +58,11 @@ class Page
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param  \DateTime $createdAt
-     * @return self
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * @param  \DateTime $updatedAt
-     * @return self
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 
     /**
@@ -117,6 +81,38 @@ class Page
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPreferredLocale()
+    {
+        return $this->preferredLocale;
+    }
+
+    /**
+     * @param string $preferredLocale
+     * @return self
+     */
+    public function setPreferredLocale($preferredLocale)
+    {
+        $this->preferredLocale = $preferredLocale;
+
+        return $this;
+    }
+
+    /**
+     * @return PageTranslation
+     */
+    public function getPreferredTranslation()
+    {
+        if ($this->preferredLocale === null && $this->getTranslations()->count() > 0) {
+            $this->preferredLocale = $this->getTranslations()->first()->getLocale();
+            return $this->getTranslations()->first();
+        }
+
+        return $this->translate($this->preferredLocale ?: $this->getCurrentLocale());
     }
 
     public function __call($method, $arguments)

@@ -17,6 +17,8 @@ class LoadPageData extends AbstractFixture
     {
         $page = new Page();
         $page2 = new Page();
+        $page3 = new Page();
+        $page4 = new Page();
 
         $page
             ->setTitle('Home')
@@ -47,10 +49,25 @@ Markdown
             )
         ;
 
+        $page3
+            ->translate('fr')
+            ->setTitle('Foo Bar')
+            ->setContent('Un contenu aléatoire.')
+        ;
+
+        $page4
+            ->setTitle('Something in english')
+            ->setContent('I\'m a random page but i\'m in english !')
+        ;
+
         $manager->persist($page);
         $manager->persist($page2);
+        $manager->persist($page3);
+        $manager->persist($page4);
         $page->mergeNewTranslations();
         $page2->mergeNewTranslations();
+        $page3->mergeNewTranslations();
+        $page4->mergeNewTranslations();
         $manager->flush();
     }
 }

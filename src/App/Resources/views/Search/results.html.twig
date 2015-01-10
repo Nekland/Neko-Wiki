@@ -9,10 +9,32 @@
         </div>
     </div>
 
+    {% if potentialMatchPage is not empty %}
+        <div class="row page-lang-list">
+            <div class="col-md-12">
+                <p class="lead">{% trans %}app.search.available_in_other_languages{% endtrans %}</p>
+            </div>
+        </div>
+        <div class="row page-lang-list">
+            <div class="col-md-12">
+                {% for translation in potentialMatchPage.translations %}
+                <div class="well item-page-lang-list">
+                    <a href="{{ path('show_page', {'page_slug': translation.titleSlug}) }}">
+                        <img src="{{ asset('bundles/nekowiki/images/flags/64/' ~ language_manager.getFlagImage(translation.locale)) }}" /><br />
+                        {{ translation.title }} ({{ translation.locale }})
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
     <div class="row">
         <div class="col-md-12">
             <p>
-                <i>{% trans %}app.search.does_not_exists{% endtrans %}</i>
+                {% if potentialMatchPage is empty %}
+                    <i>{% trans %}app.search.does_not_exists{% endtrans %}</i>
+                {% endif %}
                 <i>
                     {{- 'app.search.create_the_page_p1'|trans -}}
                     <a href="{{ path('new_page', {'title': query|capitalize}) }}" class="non-existant">{{ query|capitalize }}</a>
@@ -21,23 +43,44 @@
             </p>
 
             <h3>{% trans %}app.search.relevant{% endtrans %}</h3>
-            {% for page in pager %}
-                <div class="search-result">
-                    <p class="heading"><a href="{{ path('show_page', {'page_slug': page.titleSlug}) }}">{{ page.title }}</a></p>
-                    <p class="description">{{ page.content|truncate(200) }}</p>
-                    <p class="more">{% trans %}app.search.last_update{% endtrans %} {{ page.updatedAt | format_datetime }}</p>
-                </div>
+            {% for page in mainPager %}
+                {{ include(
+                    'NekoWiki:Search:_results_list.html.twig',
+                    {'page_slug': page.titleSlug, 'content': page.content, 'updatedAt': page.updatedAt, 'title': page.title}
+                ) }}
             {% else %}
                 <p class="nothing-found">{% trans %}app.search.nothing_relevant{% endtrans %}</p>
             {% endfor %}
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-offset-3 col-md-6">
-            <div class="pagerfanta">
-                {{ pagerfanta(pager, 'twitter_bootstrap3') }}
+    {% if mainPager.count() > 0 %}
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                <div class="pagerfanta">
+                    {{ pagerfanta(mainPager, 'twitter_bootstrap3') }}
+                </div>
             </div>
+        </div>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-md-12">
+            {% if otherLangPager.count() > 0 %}
+                <h3>{% trans %}app.search.in_other_languages{% endtrans %}</h3>
+                {% for page in otherLangPager %}
+                    {{ include(
+                        'NekoWiki:Search:_results_list.html.twig',
+                        {
+                            'page_slug': page.preferredTranslation.titleSlug,
+                            'content': page.preferredTranslation.content,
+                            'updatedAt': page.preferredTranslation.updatedAt,
+                            'title': page.preferredTranslation.title,
+                            'language': page.preferredLocale
+                        }
+                    ) }}
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
 

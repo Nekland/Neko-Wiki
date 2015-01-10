@@ -32,6 +32,7 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         parameters: "@neko_wiki.provider.wiki_parameter"
+        language_manager: "@neko_wiki.language.manager"
 
 
 

@@ -1,23 +1,18 @@
 parameters:
     neko_wiki.provider.wiki_parameter.class: App\Provider\WikiParameterProvider
     neko_wiki.event.subscriber.locale.class: App\Event\Subscribers\LocaleListener
-    neko_wiki.provider.languages.class:      App\Provider\LanguageProvider
+    neko_wiki.provider.languages.class: App\Language\LanguageManager
 
 services:
 
     neko_wiki.provider.wiki_parameter:
         class: %neko_wiki.provider.wiki_parameter.class%
 
-    neko_wiki.provider.language:
+    neko_wiki.language.manager:
         class: %neko_wiki.provider.languages.class%
+        arguments: [@request_stack, %kernel.default_locale%]
 
     twig.extension.text:
         class: Twig_Extensions_Extension_Text
         tags:
             - { name: twig.extension }
-
-    neko_wiki.event.subscriber.locale:
-        class: %neko_wiki.event.subscriber.locale.class%
-        arguments: ["%kernel.default_locale%"]
-        tags:
-            - { name: kernel.event_subscriber }

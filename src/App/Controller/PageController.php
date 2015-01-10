@@ -42,7 +42,7 @@ class PageController extends Controller
         return $this->render('NekoWiki:Page:new.html.twig', [
             'form'      => $form->createView(),
             'page'      => $page,
-            'languages' => $this->get('neko_wiki.provider.language')->getLanguages()
+            'languages' => $this->get('neko_wiki.language.manager')->getLanguages()
         ]);
     }
 
@@ -68,7 +68,7 @@ class PageController extends Controller
         return $this->render('NekoWiki:Page:edit.html.twig', [
             'form'      => $form->createView(),
             'page'      => $page,
-            'languages' => $this->get('neko_wiki.provider.language')->getLanguages()
+            'languages' => $this->get('neko_wiki.language.manager')->getLanguages()
         ]);
     }
 
@@ -82,7 +82,7 @@ class PageController extends Controller
     {
         return $this->render('NekoWiki:Page:_other_translations.html.twig', [
             'translations' => $page->getTranslations(),
-            'languages'    => $this->get('neko_wiki.provider.language')->getLanguages()
+            'languages'    => $this->get('neko_wiki.language.manager')->getLanguages()
         ]);
     }
 }

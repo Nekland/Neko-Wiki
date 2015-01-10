@@ -2,19 +2,22 @@
 
 namespace spec\App\ParamConverter;
 
-
 use App\Entity\Page;
-use App\Entity\PageRepository;
 use App\Provider\PageProvider;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Symfony\Component\HttpFoundation\ParameterBag;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 
 class PageParamConverterSpec extends ObjectBehavior
 {
-    public function let(PageProvider $pageProvider, ParamConverter $configuration, Page $page)
+    public function it_is_initializable()
+    {
+        $this->shouldHaveType('Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\ParamConverterInterface');
+    }
+
+    public function let(PageProvider $pageProvider, Page $page)
     {
         $pageProvider->findPageBySlug(Argument::any())->willReturn($page);
         $this->beConstructedWith($pageProvider);
@@ -49,5 +52,4 @@ class PageParamConverterSpec extends ObjectBehavior
 
         $this->apply($request, $configuration)->shouldReturn(true);
     }
-
 }

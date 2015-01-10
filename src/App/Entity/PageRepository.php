@@ -4,28 +4,75 @@ namespace App\Entity;
 
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query\ResultSetMappingBuilder;
 
 class PageRepository extends EntityRepository
 {
     /**
-     * @param  string $query
-     * @param  string $locale
+     * @param string $query
+     * @param array  $whereStatements
+     *
      * @return \Doctrine\ORM\QueryBuilder
      */
-    public function createSearchContentQb($query, $locale='en')
+    public function createSearchContentQb($query, $whereStatements = [])
     {
-        $qb = $this->createQueryBuilder('p');
+        $rsm = new ResultSetMappingBuilder($this->_em);
+        $rsm->addRootEntityFromClassMetadata('App\Entity\Page', 'p');
+        $rsm->addJoinedEntityFromClassMetadata('App\Entity\PageTranslation', 'pt', 'p', 'translations', ['id' => 'translatable_id']);
+        $rsm->addIndexBy('pt', 'locale');
 
-        $qb->innerJoin('p.translations', 'pt');
 
-        $qb
-            ->where($qb->expr()->like('pt.content', ':query'))
-            ->andWhere($qb->expr()->eq('pt.locale', ':locale'))
-            ->setParameter('query', '%' . $query . '%')
-            ->setParameter('locale', $locale)
+        $sql = 'SELECT ' . $rsm->generateSelectClause(['p' => 'p', 'pt' => 'pt']) . ' FROM page p ' .
+            'INNER JOIN page_translation pt ON pt.translatable_id = p.id ' .
+            'WHERE (pt.title LIKE ? OR pt.content LIKE ?) ';
+
+        foreach ($whereStatements as $whereStatement) {
+            $sql .= $whereStatement . ' ';
+        }
+
+        $sql .= 'ORDER BY CASE ' .
+            'WHEN pt.title LIKE ? THEN 0 ' .
+            'WHEN pt.title LIKE ? THEN 1 ' .
+            'WHEN pt.title LIKE ? THEN 2 ' .
+            'ELSE 3 END'
+        ;
+        $nq = $this->_em->createNativeQuery($sql, $rsm);
+
+        $nq
+            ->setParameters([
+                1 => '%' . $query . '%',
+                2 => '%' . $query . '%',
+                3 => $query . ' %',
+                4 => '% ' . $query . ' %',
+                5 => $query . '%'
+            ])
         ;
 
-        return $qb;
+        return $nq;
+    }
+
+    /**
+     * Return a query builder of search for a specified language
+     *
+     * @param string $query
+     * @param string $language
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function createSearchContentQbForLanguage($query, $language)
+    {
+        return $this->createSearchContentQb($query, [ ' AND pt.locale = \'' . $language . '\'']);
+    }
+
+    /**
+     * Return a query builder of search but does not return pages for the specified language
+     *
+     * @param string $query
+     * @param string $language
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function createSearchContentQbExceptLanguage($query, $language)
+    {
+        return $this->createSearchContentQb($query, [' AND pt.locale <> \'' . $language . '\'']);
     }
 
     /**
