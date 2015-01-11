@@ -38,23 +38,30 @@ class PageProvider
 
     /**
      * @param string $slug
-     * @param string $culture
+     * @param string $preferredCulture
      * @return null|\App\Entity\Page
      */
-    public function findPageBySlugAndCulture($slug, $culture = null)
+    public function findPageBySlugAndCulture($slug, $preferredCulture = null)
     {
-        if (null === $culture) {
-            $translation = $this->getTranslationRepository()->findOneBy(['titleSlug' => $slug]);
+        $translation = null;
+        $criteria = ['titleSlug' => $slug];
+        $repository = $this->getTranslationRepository();
+
+        if (null === $preferredCulture) {
+            $translation = $repository->findOneBy($criteria);
         } else {
-            $translation = $this->getTranslationRepository()->findOneBy(['titleSlug' => $slug, 'locale' => $culture]);
+            $translation = $repository->findOneBy(array_merge(['locale' => $preferredCulture], $criteria));
+            if (null === $translation) {
+                $translation = $repository->findOneBy($criteria);
+            }
         }
 
-        if ($translation === null) {
+        if (null === $translation) {
             return null;
         }
 
         $page = $translation->getTranslatable();
-        $page->setCurrentLocale($culture);
+        $page->setCurrentLocale($preferredCulture);
 
         return $page;
     }

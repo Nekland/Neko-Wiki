@@ -3,20 +3,14 @@ homepage:
     defaults:
         _controller: 'NekoWiki:Home:language'
 
-<<<<<<< HEAD
-homepage_by_lang:
-    path: /{_locale}/
-    defaults:
-        _controller: 'NekoWiki:Home:language'
-=======
 neko_wiki_page:
     prefix: /
     resource: 'routing/page.yml'
+
 neko_wiki_user:
     prefix: /
     resource: 'routing/user.yml'
->>>>>>> Better management of website translation
 
-neko_wiki_main:
+neko_wiki_global:
     prefix: /
     resource: 'routing/global.yml'

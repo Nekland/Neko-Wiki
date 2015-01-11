@@ -4,7 +4,7 @@ show_page:
         _controller:  'NekoWiki:Page:show'
 
 edit_page:
-    path: /edit/{page_slug}.html
+    path: /{culture}/edit/{page_slug}.html
     defaults:
         _controller: 'NekoWiki:Page:edit'
 
