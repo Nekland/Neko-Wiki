@@ -4,6 +4,8 @@ namespace App\Controller;
 
 
 use App\Entity\Page;
+use App\Event\Page\Events;
+use App\Event\Page\PageEvent;
 use Symfony\Component\HttpFoundation\Request;
 
 class PageController extends Controller
@@ -35,6 +37,7 @@ class PageController extends Controller
         if ($form->isValid()) {
             $page->mergeNewTranslations();
             $this->persistAndFlush($page);
+            $this->get('event_dispatcher')->dispatch(Events::ON_PAGE_PERSIST, new PageEvent($page));
 
             return $this->redirectToRoute('show_page', ['page_slug' => $page->getTitleSlug()]);
         }
@@ -61,6 +64,7 @@ class PageController extends Controller
         if ($form->isValid()) {
             $page->mergeNewTranslations();
             $this->getEntityManager()->flush();
+            $this->get('event_dispatcher')->dispatch(Events::ON_PAGE_PERSIST, new PageEvent($page));
 
             return $this->redirectToRoute('show_page', ['page_slug' => $page->getTitleSlug()]);
         }

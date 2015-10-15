@@ -49,3 +49,27 @@ sonata_intl:
         locales:
             fr: Europe/Paris
             en: America/New_York
+
+
+fos_elastica:
+    clients:
+        default: { host: localhost, port: 9200 }
+    serializer: ~
+    indexes:
+        neko_wiki:
+            index_name: neko_wiki_%kernel.environment%
+            types:
+                page:
+                    serializer:
+                        groups: [elastica]
+
+                    persistence:
+                        # the driver can be orm, mongodb or propel
+                        # listener and finder are not supported by
+                        # propel and should be removed
+                        driver: orm
+                        model: App\Entity\PageTranslation
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~

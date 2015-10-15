@@ -2,8 +2,7 @@
 
 namespace App\DependencyInjection;
 
-
-
+use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
@@ -33,6 +32,23 @@ class NekoWikiExtension extends Extension
 
         $definition = $container->getDefinition('neko_wiki.language.manager');
         $definition->addArgument($config['general_parameters']['languages']);
+
+        $this->loadSearchConfig($config, $container);
+    }
+
+    public function loadSearchConfig(array $config, ContainerBuilder $container)
+    {
+        switch($config['general_parameters']['search_strategy']) {
+            case 'repository':
+                // This is the default configuration
+                break;
+            case 'elastic_search':
+                $searchDefinition = $container->getDefinition('neko_wiki.searcher');
+                $searchDefinition->setClass('App\Search\ElasticSearch');
+                break;
+            default:
+                throw new InvalidConfigurationException;
+        }
     }
 
     /**

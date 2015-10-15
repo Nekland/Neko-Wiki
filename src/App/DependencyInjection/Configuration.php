@@ -42,6 +42,13 @@ class Configuration implements ConfigurationInterface
                         ->end()
                         ->prototype('scalar')->end()
                     ->end()
+                    ->scalarNode('search_strategy')
+                        ->defaultValue('repository')
+                        ->validate()
+                        ->ifNotInArray(['repository', 'elastic_search'])
+                            ->thenInvalid('Invalid search strategy "%s"')
+                        ->end()
+                    ->end()
                 ->end()
         ->end();
     }
