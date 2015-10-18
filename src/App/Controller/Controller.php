@@ -44,16 +44,6 @@ class Controller extends BaseController
     }
 
     /**
-     * @param  string $route
-     * @param  array $parameters
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    protected function redirectToRoute($route, array $parameters = [])
-    {
-        return $this->redirect($this->generateUrl($route, $parameters));
-    }
-
-    /**
      * @param $entity
      */
     protected function persistAndFlush($entity)
