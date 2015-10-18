@@ -2,15 +2,8 @@
 
 namespace spec\App\Provider;
 
-use App\Entity\Page;
-use App\Entity\PageTranslation;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityRepository;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 class PageProviderSpec extends ObjectBehavior
 {
@@ -19,14 +12,16 @@ class PageProviderSpec extends ObjectBehavior
         $this->shouldHaveType('App\Provider\PageProvider');
     }
 
-    public function let(
-        EntityManager $em,
-        EntityRepository $repo,
-        PageTranslation $translation,
-        Page $page,
-        RequestStack $requestStack,
-        Request $request
-    ) {
+    /**
+     * @param \Doctrine\ORM\EntityManager                    $em
+     * @param \Doctrine\ORM\EntityRepository                 $repo
+     * @param \App\Entity\PageTranslation                    $translation
+     * @param \App\Entity\Page                               $page
+     * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
+     * @param \Symfony\Component\HttpFoundation\Request      $request
+     */
+    public function let($em, $repo, $translation, $page, $requestStack, $request)
+    {
         $requestStack->getCurrentRequest()->willReturn($request);
         $request->getLocale()->willReturn('en');
 

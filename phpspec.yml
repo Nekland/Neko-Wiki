@@ -1,2 +1,4 @@
 extensions:
     - PhpSpec\NyanFormattersExtension\Extension
+
+formatter.name: nyan.cat
