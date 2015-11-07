@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "603a783520d51f6184f151fe41698687",
-    "content-hash": "e39e2d8e0cab7da44d6b33c80dffe687",
+    "hash": "bbfdce5977e7484ca02abfa9fb1d17db",
+    "content-hash": "275787722627aee5de4eb6c799b482f2",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1598,17 +1598,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v4.0.1",
+            "version": "v4.0.2",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "62d99ba41144e704300e40f755346553702b27c9"
+                "reference": "6f5d663a1a34b5116c69009895feb81fb37a8875"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/62d99ba41144e704300e40f755346553702b27c9",
-                "reference": "62d99ba41144e704300e40f755346553702b27c9",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/6f5d663a1a34b5116c69009895feb81fb37a8875",
+                "reference": "6f5d663a1a34b5116c69009895feb81fb37a8875",
                 "shasum": ""
             },
             "require": {
@@ -1654,7 +1654,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-08-03 10:07:56"
+            "time": "2015-10-20 06:54:18"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -3266,12 +3266,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/FriendlyContexts.git",
-                "reference": "8bd3dec7c412e65c2d58ec985285e0a6b874dbf8"
+                "reference": "28497105ba8417f4fc0714ee2f466ecb1f5d2a0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/FriendlyContexts/zipball/8bd3dec7c412e65c2d58ec985285e0a6b874dbf8",
-                "reference": "8bd3dec7c412e65c2d58ec985285e0a6b874dbf8",
+                "url": "https://api.github.com/repos/KnpLabs/FriendlyContexts/zipball/28497105ba8417f4fc0714ee2f466ecb1f5d2a0d",
+                "reference": "28497105ba8417f4fc0714ee2f466ecb1f5d2a0d",
                 "shasum": ""
             },
             "require": {
@@ -3310,7 +3310,7 @@
                 }
             ],
             "description": "Some BEHAT contexts",
-            "time": "2015-10-09 07:48:33"
+            "time": "2015-10-22 07:45:00"
         },
         {
             "name": "nelmio/alice",
@@ -4086,7 +4086,6 @@
         "nekland/dependency-tools": 20,
         "white-october/pagerfanta-bundle": 20,
         "behat/mink-extension": 20,
-        "phpspec/phpspec": 20,
         "knplabs/friendly-contexts": 20
     },
     "prefer-stable": false,
