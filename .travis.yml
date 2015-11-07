@@ -19,7 +19,7 @@ before_script:
     - java -jar selenium-server-standalone-2.42.2.jar > /dev/null &
     - sleep 5
 
-    - php app/console ser:run &
+    - php app/console ser:run -e=test &
 
 notifications:
     # email:
