@@ -8,7 +8,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as JMS;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Entity\PageTranslationRepository")
  * @ORM\Table(name="page_translation")
  */
 class PageTranslation
@@ -58,11 +58,23 @@ class PageTranslation
     /**
      * @JMS\VirtualProperty
      * @JMS\SerializedName("id")
+     * @JMS\Groups({"elastica"})
      * @return int
      */
-    public function getId()
+    public function getPageId()
     {
         return $this->id;
+    }
+
+    /**
+     * @JMS\VirtualProperty
+     * @JMS\SerializedName("locale")
+     * @JMS\Groups({"elastica"})
+     * @return string
+     */
+    public function getPageLocale()
+    {
+        return $this->locale;
     }
 
     /**
