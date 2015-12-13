@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a85e942724920ac756405d09f4f0cda5",
-    "content-hash": "8c9b66693133cf5f078290d3c7a2ffe1",
+    "hash": "e02d5b91ac498b1a2494a3f40defe361",
+    "content-hash": "7726114ad0fb3f140d1a4b64ef94d133",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1930,36 +1930,34 @@
         },
         {
             "name": "ruflin/elastica",
-            "version": "2.3.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ruflin/Elastica.git",
-                "reference": "0df1d7b513960ba11d3075652dcd71fcab8dd37a"
+                "reference": "c000d5d9bdf6cd0c4ad5fb240fe5fc2d01baa071"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/0df1d7b513960ba11d3075652dcd71fcab8dd37a",
-                "reference": "0df1d7b513960ba11d3075652dcd71fcab8dd37a",
+                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/c000d5d9bdf6cd0c4ad5fb240fe5fc2d01baa071",
+                "reference": "c000d5d9bdf6cd0c4ad5fb240fe5fc2d01baa071",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3",
+                "php": ">=5.4.0",
                 "psr/log": "~1.0"
             },
             "require-dev": {
-                "guzzlehttp/guzzle": "5.3.*",
-                "munkie/elasticsearch-thrift-php": "1.4.*"
+                "guzzlehttp/guzzle": "5.3.*"
             },
             "suggest": {
                 "egeloen/http-adapter": "Allow using httpadapter transport",
                 "guzzlehttp/guzzle": "Allow using guzzle 5.3.x as the http transport (Requires php 5.4)",
-                "monolog/monolog": "Logging request",
-                "munkie/elasticsearch-thrift-php": "Allow using thrift transport"
+                "monolog/monolog": "Logging request"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2.x-dev"
+                    "dev-master": "2.3.x-dev"
                 }
             },
             "autoload": {
@@ -1983,7 +1981,7 @@
                 "client",
                 "search"
             ],
-            "time": "2015-10-19 07:09:10"
+            "time": "2015-12-13 20:27:31"
         },
         {
             "name": "sensio/distribution-bundle",
@@ -3706,27 +3704,27 @@
         },
         {
             "name": "nelmio/alice",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nelmio/alice.git",
-                "reference": "e4b48d08ac935650747a2f3041c3577a4bed443d"
+                "reference": "f9afb65c8511967d672b6bc451d7156ea437d796"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nelmio/alice/zipball/e4b48d08ac935650747a2f3041c3577a4bed443d",
-                "reference": "e4b48d08ac935650747a2f3041c3577a4bed443d",
+                "url": "https://api.github.com/repos/nelmio/alice/zipball/f9afb65c8511967d672b6bc451d7156ea437d796",
+                "reference": "f9afb65c8511967d672b6bc451d7156ea437d796",
                 "shasum": ""
             },
             "require": {
                 "fzaninotto/faker": "~1.0",
                 "php": ">=5.4",
-                "symfony/yaml": "~2.0"
+                "symfony/yaml": "~2.0|~3.0"
             },
             "require-dev": {
                 "doctrine/common": "~2.3",
-                "phpunit/phpunit": "3.7.*",
-                "symfony/property-access": "~2.2"
+                "phpunit/phpunit": "~4.0",
+                "symfony/property-access": "~2.2|~3.0"
             },
             "type": "library",
             "extra": {
@@ -3760,7 +3758,7 @@
                 "orm",
                 "test"
             ],
-            "time": "2015-10-01 16:43:07"
+            "time": "2015-12-10 10:03:17"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -4149,23 +4147,23 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "2b0112e42c338afa9ad9dfeb94d66f6d84c2f828"
+                "reference": "13edfd8706462032c2f52b4b862974dd46b71c9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/2b0112e42c338afa9ad9dfeb94d66f6d84c2f828",
-                "reference": "2b0112e42c338afa9ad9dfeb94d66f6d84c2f828",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/13edfd8706462032c2f52b4b862974dd46b71c9e",
+                "reference": "13edfd8706462032c2f52b4b862974dd46b71c9e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "~5"
+                "phpunit/phpunit": "~4.8"
             },
             "type": "library",
             "extra": {
@@ -4197,7 +4195,7 @@
             "keywords": [
                 "diff"
             ],
-            "time": "2015-12-06 07:21:36"
+            "time": "2015-12-08 07:14:41"
         },
         {
             "name": "sebastian/exporter",
@@ -4479,6 +4477,7 @@
     "stability-flags": {
         "nekland/dependency-tools": 20,
         "white-october/pagerfanta-bundle": 20,
+        "ruflin/elastica": 20,
         "behat/mink-extension": 20,
         "knplabs/friendly-contexts": 20
     },

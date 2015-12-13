@@ -5,6 +5,7 @@ namespace App\Search\ElasticSearch;
 
 use App\Entity\PageTranslation;
 use Elastica\Client;
+use Elastica\Query;
 use JMS\Serializer\Serializer;
 
 class ElasticaTransformer
@@ -37,7 +38,19 @@ class ElasticaTransformer
 
         $type = $this->index->getType('page');
 
-        // TODO: check if the entity already exists in elasticsearch
+        $search = new \Elastica\Search($this->client);
+        $search->addIndex($this->index);
+        $search->addType($type);
+
+        $search->setQuery(new Query(new Query\Match('id', $entity->getId())));
+
+        $result = $search->search();
+        if ($result->count() > 0) {
+            // edit only
+        } else {
+            // add new
+        }
+
         // TODO: add entity in elasticsearch OR update it
     }
 }
