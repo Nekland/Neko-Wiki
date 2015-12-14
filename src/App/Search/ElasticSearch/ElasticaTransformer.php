@@ -5,6 +5,7 @@ namespace App\Search\ElasticSearch;
 
 use App\Entity\PageTranslation;
 use Elastica\Client;
+use Elastica\Document;
 use Elastica\Query;
 use JMS\Serializer\Serializer;
 
@@ -12,6 +13,7 @@ class ElasticaTransformer
 {
     private $index;
     private $client;
+    private $serializer;
 
     /**
      * ElasticaTransformer constructor.
@@ -23,6 +25,7 @@ class ElasticaTransformer
     {
         $this->client = $elasticaClient;
         $this->index = $elasticaClient->getIndex($index);
+        $this->serializer = $serializer;
     }
 
     public function get($query)
@@ -46,11 +49,11 @@ class ElasticaTransformer
 
         $result = $search->search();
         if ($result->count() > 0) {
-            // edit only
+            // TODO: edit document
         } else {
-            // add new
+            $document = new Document($entity->getId(), $this->serializer->serialize($entity, 'json'));
+            $type->addDocument($document);
+            $type->getIndex()->refresh();
         }
-
-        // TODO: add entity in elasticsearch OR update it
     }
 }
