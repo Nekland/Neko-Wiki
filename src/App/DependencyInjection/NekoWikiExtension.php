@@ -34,6 +34,7 @@ class NekoWikiExtension extends Extension
         $definition->addArgument($config['general_parameters']['languages']);
 
         $this->loadSearchConfig($config, $container);
+        $this->loadElasticSearchConfig($config, $container);
     }
 
     public function loadSearchConfig(array $config, ContainerBuilder $container)
@@ -49,6 +50,26 @@ class NekoWikiExtension extends Extension
             default:
                 throw new InvalidConfigurationException;
         }
+    }
+
+    /**
+     * Add the parameters given in conf to ES services that need them.
+     *
+     * @param array $config
+     * @param ContainerBuilder $container
+     */
+    private function loadElasticSearchConfig(array $config, ContainerBuilder $container)
+    {
+        $definition = $container->getDefinition('neko_wiki.elastic.client_factory');
+        $definition->addArgument($config['elasticsearch']['host'])->addArgument($config['elasticsearch']['port']);
+
+
+        if ($config['elasticsearch']['index'] === 'neko_wiki') {
+            $index = 'neko_wiki_' . $container->getParameter("kernel.environment");
+        } else {
+            $index = $config['elasticsearch']['index'];
+        }
+        $container->setParameter('neko_wiki.elasticsearch.page_index', $index);
     }
 
     /**

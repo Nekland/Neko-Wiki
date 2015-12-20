@@ -19,6 +19,7 @@ class Configuration implements ConfigurationInterface
         $rootChildren = $rootNode->children();
 
         $this->buildGlobalParametersConfig($rootChildren);
+        $this->buildElasticSearchConfig($rootChildren);
 
         $rootChildren->end();
 
@@ -50,6 +51,19 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
+        ->end();
+    }
+
+    private function buildElasticSearchConfig(NodeBuilder $root)
+    {
+        $root->arrayNode('elasticsearch')
+            ->addDefaultsIfNotSet()
+                ->children()
+                    ->scalarNode('host')->defaultValue('localhost')->end()
+                    ->integerNode('port')->defaultValue(9200)->end()
+                    ->scalarNode('index')->defaultValue('neko_wiki')
+                ->end()
+            ->end()
         ->end();
     }
 }

@@ -49,11 +49,13 @@ class ElasticaTransformer
 
         $result = $search->search();
         if ($result->count() > 0) {
-            // TODO: edit document
-        } else {
-            $document = new Document($entity->getId(), $this->serializer->serialize($entity, 'json'));
-            $type->addDocument($document);
-            $type->getIndex()->refresh();
+            $type->deleteDocument($entity->getId());
         }
+        $type->getIndex()->refresh();
+
+        $document = new Document($entity->getId(), $this->serializer->serialize($entity, 'json'));
+        $type->addDocument($document);
+        $type->getIndex()->refresh();
+
     }
 }
