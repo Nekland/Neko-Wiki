@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/Nekland/Neko-Wiki.png?label=ready&title=Ready)](https://waffle.io/Nekland/Neko-Wiki)
 Neko Wiki
 ============
 
