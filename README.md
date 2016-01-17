@@ -1,7 +1,7 @@
 Neko Wiki
 ============
 
-[![Build Status](https://travis-ci.org/Nekland/Neko-Wiki.svg?branch=master)](https://travis-ci.org/Nekland/Neko-Wiki)
+[![Build Status](https://travis-ci.org/Nekland/Neko-Wiki.svg?branch=master)](https://travis-ci.org/Nekland/Neko-Wiki) [![Stories in Ready](https://badge.waffle.io/Nekland/Neko-Wiki.svg?label=ready&title=Ready)](https://waffle.io/Nekland/Neko-Wiki)
 
 For now, nothing serious.
 
