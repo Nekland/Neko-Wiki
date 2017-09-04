@@ -19,6 +19,7 @@ Installation
 $ composer install
 $ app/console doctrine:database:create
 $ app/console doctrine:schema:create
+$ app/console doctrine:fixture:load -n
 $ app/console assetic:dump # Yes, it uses assetic
 $ app/console server:run
 ```
