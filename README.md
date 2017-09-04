@@ -5,6 +5,24 @@ Neko Wiki
 
 For now, nothing serious.
 
+Requirements
+------------
+
+- PHP 5.6+ / composer
+- MariaDB
+- NodeJS/NPM
+
+Installation
+------------
+
+```bash
+$ composer install
+$ app/console doctrine:database:create
+$ app/console doctrine:schema:create
+$ app/console assetic:dump # Yes, it uses assetic
+$ app/console server:run
+```
+
 
 Many thanks to
 --------------
