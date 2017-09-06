@@ -1,10 +1,10 @@
 parameters:
     database_driver:   pdo_mysql
-    database_host:     127.0.0.1
+    database_host:     db
     database_port:     ~
-    database_name:     sfwiki
-    database_user:     root
-    database_password: ~
+    database_name:     nekowiki
+    database_user:     user
+    database_password: userpass
 
     mailer_transport:  smtp
     mailer_host:       127.0.0.1
