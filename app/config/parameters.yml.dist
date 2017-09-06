@@ -1,6 +1,6 @@
 parameters:
     database_driver:   pdo_mysql
-    database_host:     db
+    database_host:     db           # Notice: You may want to change to 127.0.0.1 if you don't use docker)
     database_port:     ~
     database_name:     nekowiki
     database_user:     user

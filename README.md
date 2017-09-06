@@ -12,6 +12,15 @@ Requirements
 - MariaDB
 - NodeJS/NPM
 
+
+Docker
+------
+
+You can use Docker to launch NekoWiki.
+```bash
+$ docker-compose up -d
+```
+
 Installation
 ------------
 
@@ -23,6 +32,8 @@ $ app/console doctrine:fixture:load -n
 $ app/console assetic:dump # Yes, it uses assetic
 $ app/console server:run
 ```
+
+Notice: If you use docker you have to run these commands in `php` container.
 
 
 Many thanks to

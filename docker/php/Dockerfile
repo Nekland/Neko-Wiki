@@ -22,8 +22,12 @@ RUN docker-php-ext-install -j$(nproc) \
     pdo \
     pdo_mysql
 
+# Install xdebug
+RUN pecl install xdebug-2.5.5 \
+    && docker-php-ext-enable xdebug
+
 COPY php.ini /usr/local/etc/php/conf.d/custom.ini
 
-# End docker config
+# Set default user + dir
 USER www-data
 WORKDIR /var/www
