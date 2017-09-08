@@ -5,9 +5,10 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as JMS;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Entity\PageTranslationRepository")
  * @ORM\Table(name="page_translation")
  */
 class PageTranslation
@@ -18,6 +19,7 @@ class PageTranslation
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @JMS\Groups({"elastica"})
      */
     private $title;
 
@@ -25,6 +27,7 @@ class PageTranslation
      * @var string
      *
      * @ORM\Column(name="content", type="text")
+     * @JMS\Groups({"elastica"})
      */
     private $content;
 
@@ -53,11 +56,25 @@ class PageTranslation
     private $updatedAt;
 
     /**
+     * @JMS\VirtualProperty
+     * @JMS\SerializedName("id")
+     * @JMS\Groups({"elastica"})
      * @return int
      */
-    public function getId()
+    public function getPageId()
     {
         return $this->id;
+    }
+
+    /**
+     * @JMS\VirtualProperty
+     * @JMS\SerializedName("locale")
+     * @JMS\Groups({"elastica"})
+     * @return string
+     */
+    public function getPageLocale()
+    {
+        return $this->locale;
     }
 
     /**

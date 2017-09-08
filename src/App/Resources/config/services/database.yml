@@ -1,0 +1,7 @@
+services:
+    neko_wiki.elastic.client_factory:
+        class: NekoWiki\Elastica\ElasticaClientFactory
+
+    neko_wiki.elastica.client:
+        class: Elastica\Client
+        factory: [@neko_wiki.elastic.client_factory, createElasticaClient]

@@ -15,10 +15,10 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  * @ORM\HasLifecycleCallbacks()
  *
  * Some methods are from PageTranslation
- * @method Page setTitle()
- * @method Page setContent()
- * @method Page translate()
- * @method Page setTitleSlug()
+ * @method Page setTitle($title)
+ * @method Page setContent($content)
+ * @method Page translate($locale)
+ * @method Page setTitleSlug($slug)
  * @method string getTitleSlug()
  * @method string getContent()
  * @method string getTitle()

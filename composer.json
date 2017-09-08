@@ -24,7 +24,9 @@
         "white-october/pagerfanta-bundle":      "dev-master",
         "sonata-project/intl-bundle":           "~2.2",
         "knplabs/knp-markdown-bundle":          "~1.3",
-        "knplabs/doctrine-behaviors":           "~1.1"
+        "jms/serializer-bundle":                "~1.0",
+        "knplabs/doctrine-behaviors":           "~1.1",
+        "ruflin/elastica":                      "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle":      "~2.3",

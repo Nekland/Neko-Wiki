@@ -4,3 +4,4 @@ imports:
     - { resource: services/user.yml }
     - { resource: services/page.yml }
     - { resource: services/search.yml }
+    - { resource: services/database.yml }
