@@ -28,6 +28,9 @@ RUN pecl install xdebug-2.5.5 \
 
 COPY php.ini /usr/local/etc/php/conf.d/custom.ini
 
-# Set default user + dir
-USER www-data
+# Aliases
+RUN echo 'alias sf="php app/console"' >> ~/.bashrc
+
+# Define www-data user + workdir
+RUN usermod -u 1000 www-data
 WORKDIR /var/www
