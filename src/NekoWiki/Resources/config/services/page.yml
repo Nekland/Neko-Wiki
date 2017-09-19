@@ -1,0 +1,21 @@
+parameters:
+    neko_wiki.param_converter.page.class:    Nekland\NekoWiki\ParamConverter\PageParamConverter
+    neko_wiki.provider.page.class:           Nekland\NekoWiki\Provider\PageProvider
+
+
+services:
+    neko_wiki.repository.page:
+        class: Nekland\NekoWiki\Entity\PageRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments: [ 'NekoWiki:Page' ]
+
+    neko_wiki.param_converter.page:
+        class: %neko_wiki.param_converter.page.class%
+        arguments: [ @neko_wiki.provider.page ]
+        tags:
+            - { name: request.param_converter, priority: 20 }
+
+    neko_wiki.provider.page:
+        class: %neko_wiki.provider.page.class%
+        arguments: [ @doctrine.orm.default_entity_manager, @request_stack ]

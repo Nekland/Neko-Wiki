@@ -4,7 +4,9 @@
     "type": "project",
     "description": "A simple wiki written in Symfony",
     "autoload": {
-        "psr-0": { "": "src/" }
+        "psr-4": {
+            "Nekland\\": "src/"
+        }
     },
     "require": {
         "php":                                  ">=5.3.9",
