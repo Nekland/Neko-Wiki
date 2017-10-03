@@ -1,0 +1,7 @@
+parameters:
+    neko_wiki.searcher.class: Nekland\NekoWiki\Search\RepositorySearch
+
+services:
+    neko_wiki.searcher:
+        class: %neko_wiki.searcher.class%
+        arguments: [ @neko_wiki.repository.page, @neko_wiki.language.manager ]

@@ -23,7 +23,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
             new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle(),
 
-            new App\NekoWiki(),
+            new Nekland\NekoWiki\NekoWiki(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

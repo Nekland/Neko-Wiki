@@ -1,0 +1,22 @@
+Nekland\NekoWiki\Entity\User\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
+    properties:
+        username:
+            - NotBlank: ~
+            - Length: { min: 2 }
+        email:
+            - Email: ~
+            - NotBlank: ~
+        password:
+            - NotBlank: ~
+            - Length: { min: 4 }
+
+Nekland\NekoWiki\Entity\PageTranslation:
+    properties:
+        title:
+            - NotBlank: ~
+            - Length: { min: 3 }
+        content:
+            - NotBlank: ~
+            - Length: { min: 100 }
