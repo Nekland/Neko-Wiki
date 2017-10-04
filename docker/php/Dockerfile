@@ -7,6 +7,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
         git \
         wget \
         nodejs \
+        zip \
     && rm -rf /var/lib/apt/lists/*
 
 # Composer
