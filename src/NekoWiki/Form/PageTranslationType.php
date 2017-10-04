@@ -25,11 +25,11 @@ class PageTranslationType extends AbstractType
 
             if ($translation === null || (!empty($translation) && $translation->getId() === null) ) {
                 $builder->add('title', null, [
-                    'label' => 'app.page.form.title'
+                    'label' => 'neko_wiki.page.form.title'
                 ]);
             }
             $builder->add('content', null, [
-                'label' => 'app.page.form.content'
+                'label' => 'neko_wiki.page.form.content'
             ]);
             $builder->add('locale', 'hidden');
         });

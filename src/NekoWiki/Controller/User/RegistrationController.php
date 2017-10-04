@@ -42,12 +42,12 @@ class RegistrationController extends Controller
 
             $this->persistAndFlush($user);
 
-            $this->setFlash('success', 'app.user.registration.success');
+            $this->setFlash('success', 'neko_wiki.user.registration.success');
 
             return $this->redirectToRoute('homepage_by_lang', ['_locale' => $this->getCurrentLocale()]);
         }
 
-        $this->setFlash('error', 'app.user.registration.error');
+        $this->setFlash('error', 'neko_wiki.user.registration.error');
 
         return $this->render('NekoWiki:User:register.html.twig', ['form' => $form->createView()]);
     }

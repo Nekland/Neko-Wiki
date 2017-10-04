@@ -18,22 +18,22 @@ class RegistrationType extends AbstractType
     {
         $builder
             ->add('username', null, [
-                'label' => 'app.user.registration.form.username'
+                'label' => 'neko_wiki.user.registration.form.username'
             ])
             ->add('password', 'repeated', [
                 'type'  => 'password',
                 'first_options' => [
-                    'label' => 'app.user.registration.form.password'
+                    'label' => 'neko_wiki.user.registration.form.password'
                 ],
                 'second_options' => [
-                    'label' => 'app.user.registration.form.password_repeat'
+                    'label' => 'neko_wiki.user.registration.form.password_repeat'
                 ]
             ])
             ->add('email', null, [
-                'label' => 'app.user.registration.form.email'
+                'label' => 'neko_wiki.user.registration.form.email'
             ])
             ->add('submit', 'submit', [
-                'label' => 'app.user.registration.form.submit'
+                'label' => 'neko_wiki.user.registration.form.submit'
             ])
         ;
     }
