@@ -2,11 +2,11 @@
 {{ form_start(form) }}
 
 <div class="form-group">
-    {{ form_widget(form.search, {'attr': { 'placeholder': 'app.search.placeholder'|trans, 'class': 'form-control input-lg' }, 'value': content } ) }}
+    {{ form_widget(form.search, {'attr': { 'placeholder': 'neko_wiki.search.placeholder'|trans, 'class': 'form-control input-lg' }, 'value': content } ) }}
 </div>
 
 <p class="text-center">
-    <button type="submit" class="btn btn-primary btn-lg">{% trans %}app.search.submit_search{% endtrans %}</button>
+    <button type="submit" class="btn btn-primary btn-lg">{% trans %}neko_wiki.search.submit_search{% endtrans %}</button>
 </p>
 
 {{ form_end(form) }}

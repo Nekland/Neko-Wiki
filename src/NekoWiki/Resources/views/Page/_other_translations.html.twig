@@ -1,6 +1,6 @@
 {% if translations | length > 1 %}
     <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans %}app.page.menu.other_translations{% endtrans %} <span class="caret"></span></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans %}neko_wiki.page.menu.other_translations{% endtrans %} <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
             {% for translation in translations %}
                 {% if languages[translation.locale] is defined %}

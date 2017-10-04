@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col-md-offset-2 col-md-8">
-            <h1>{% trans %}app.search.search{% endtrans %}</h1>
+            <h1>{% trans %}neko_wiki.search.search{% endtrans %}</h1>
             {{ render(controller('NekoWiki:Search:completeForm', {'content' : query })) }}
         </div>
     </div>
@@ -12,7 +12,7 @@
     {% if potentialMatchPage is not empty %}
         <div class="row page-lang-list">
             <div class="col-md-12">
-                <p class="lead">{% trans %}app.search.available_in_other_languages{% endtrans %}</p>
+                <p class="lead">{% trans %}neko_wiki.search.available_in_other_languages{% endtrans %}</p>
             </div>
         </div>
         <div class="row page-lang-list">
@@ -33,23 +33,23 @@
         <div class="col-md-12">
             <p>
                 {% if potentialMatchPage is empty %}
-                    <i>{% trans %}app.search.does_not_exists{% endtrans %}</i>
+                    <i>{% trans %}neko_wiki.search.does_not_exists{% endtrans %}</i>
                 {% endif %}
                 <i>
-                    {{- 'app.search.create_the_page_p1'|trans -}}
+                    {{- 'neko_wiki.search.create_the_page_p1'|trans -}}
                     <a href="{{ path('new_page', {'title': query|capitalize}) }}" class="non-existant">{{ query|capitalize }}</a>
-                    {{- 'app.search.create_the_page_p2'|trans -}}
+                    {{- 'neko_wiki.search.create_the_page_p2'|trans -}}
                 </i>
             </p>
 
-            <h3>{% trans %}app.search.relevant{% endtrans %}</h3>
+            <h3>{% trans %}neko_wiki.search.relevant{% endtrans %}</h3>
             {% for page in mainPager %}
                 {{ include(
                     'NekoWiki:Search:_results_list.html.twig',
                     {'page_slug': page.titleSlug, 'content': page.content, 'updatedAt': page.updatedAt, 'title': page.title}
                 ) }}
             {% else %}
-                <p class="nothing-found">{% trans %}app.search.nothing_relevant{% endtrans %}</p>
+                <p class="nothing-found">{% trans %}neko_wiki.search.nothing_relevant{% endtrans %}</p>
             {% endfor %}
         </div>
     </div>
@@ -67,7 +67,7 @@
     <div class="row">
         <div class="col-md-12">
             {% if otherLangPager.count() > 0 %}
-                <h3>{% trans %}app.search.in_other_languages{% endtrans %}</h3>
+                <h3>{% trans %}neko_wiki.search.in_other_languages{% endtrans %}</h3>
                 {% for page in otherLangPager %}
                     {{ include(
                         'NekoWiki:Search:_results_list.html.twig',
