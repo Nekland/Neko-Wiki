@@ -1,0 +1,79 @@
+{
+    "name": "nekland/neko-wiki",
+    "license": "MIT",
+    "type": "project",
+    "description": "A simple wiki written in Symfony",
+    "autoload": {
+        "psr-4": {
+            "Nekland\\": "src/"
+        }
+    },
+    "require": {
+        "php":                                  ">=5.3.9",
+        "symfony/symfony":                      "2.7.*",
+        "doctrine/orm":                         "~2.5",
+        "doctrine/doctrine-bundle":             "~1.4",
+        "symfony/assetic-bundle":               "~2.3",
+        "symfony/swiftmailer-bundle":           "~2.3",
+        "symfony/monolog-bundle":               "~2.4",
+        "sensio/distribution-bundle":           "~4.0",
+        "sensio/framework-extra-bundle":        "~3.0.2",
+        "incenteev/composer-parameter-handler": "~2.0",
+        "twig/extensions":                      "~1.3",
+        "nekland/dependency-tools":             "dev-master",
+        "doctrine/doctrine-fixtures-bundle":    "2.2.*",
+        "stof/doctrine-extensions-bundle":      "1.2.*",
+        "white-october/pagerfanta-bundle":      "dev-master",
+        "sonata-project/intl-bundle":           "~2.2",
+        "knplabs/knp-markdown-bundle":          "~1.3",
+        "knplabs/doctrine-behaviors":           "~1.1"
+    },
+    "require-dev": {
+        "sensio/generator-bundle":      "~2.3",
+        "behat/behat":                  "~3.0",
+        "behat/mink-extension":         "~2@dev",
+        "behat/mink-browserkit-driver": "*",
+        "behat/mink-selenium2-driver":  "*",
+        "behat/mink-goutte-driver":     "*",
+        "phpspec/phpspec":              "~2.3",
+        "knplabs/friendly-contexts":    "dev-master",
+        "phpspec/nyan-formatters":      "1.*"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Yohang\\DependencyTools::installDeps",
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+        ],
+        "post-update-cmd": [
+            "Yohang\\DependencyTools::updateDeps",
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+        ]
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-web-dir": "web",
+        "incenteev-parameters": {
+            "file": "app/config/parameters.yml"
+        },
+        "branch-alias": {
+            "dev-master": "2.4-dev"
+        },
+        "dependency-tools": {
+            "npm":   true,
+            "bower": {
+                "path": "node_modules/.bin/bower"
+            }
+        }
+    }
+}
