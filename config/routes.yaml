@@ -1,3 +1,17 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+homepage:
+    path: /
+    defaults:
+        _controller: 'Nekland\NekoWiki\Infrastructure\HomeController:language'
+
+homepage_by_lang:
+    path: /{_locale}/
+    defaults:
+        _controller: 'Nekland\NekoWiki\Infrastructure\HomeController:language'
+
+neko_wiki_main:
+    prefix: /{_locale}
+    resource: 'routes/'
+    type: directory

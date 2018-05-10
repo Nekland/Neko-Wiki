@@ -23,7 +23,7 @@ doctrine:
         mappings:
             App:
                 is_bundle: false
-                type: xml
-                dir: '%kernel.project_dir%/config/doctrine/user'
-                prefix: 'Nekland\NekoWiki\Domain\User\Model'
-                alias: User
+                type: annotation
+                dir: '%kernel.project_dir%/src/Model'
+                prefix: 'Nekland\NekoWiki\Model'
+                alias: Domain

@@ -1,0 +1,36 @@
+# routing imports
+#neko_wiki_user:
+#    resource: 'user.yml'
+
+
+# no category routes
+
+search:
+    path: /search.html
+    defaults:
+        _controller: 'NekoWiki:Search:searchRedirection'
+    requirements:
+        _method: POST
+
+search_results:
+    path: /search/results.html
+    defaults:
+        _controller: 'NekoWiki:Search:results'
+    requirements:
+        _method: GET
+
+
+edit_page:
+    path: /article/{page_slug}/modify.html
+    defaults:
+        _controller: 'NekoWiki:Page:edit'
+
+new_page:
+    path: /article/creation
+    defaults:
+        _controller: 'NekoWiki:Page:new'
+
+show_page:
+    path: /article/{page_slug}.html
+    defaults:
+        _controller: 'Nekland\NekoWiki\Infrastructure\PageController:show'
